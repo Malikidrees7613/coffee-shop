@@ -1,0 +1,99 @@
+# Product Requirements Document: Artisan Coffee Web App
+
+## 1. Project Overview
+
+Artisan Coffee is a premium coffee shop chain with multiple locations (Seattle and Portland). The Artisan Coffee Web App is designed to serve as their primary digital storefront. It aims to provide an elevated, modern user experience that mirrors the quality of their artisanal coffee and pastries.
+
+### 1.1 Goals and Objectives
+*   **Brand Experience:** Convey a premium, artisanal brand identity through a modern, visually stunning, and dynamic web design.
+*   **E-commerce:** Enable customers to seamlessly purchase coffee beans, merchandise, and subscriptions online.
+*   **Ordering:** Facilitate online ordering for in-store pickup and delivery.
+*   **Information:** Provide clear information about menu items, locations, roasting processes, and the company's story.
+*   **Customer Engagement:** Foster loyalty through user accounts, subscriptions, and a newsletter.
+
+---
+
+## 2. Target Audience
+
+*   **Coffee Connoisseurs:** Individuals who appreciate high-quality, single-origin beans and artisanal roasting methods.
+*   **Local Customers:** People living or working near Artisan Coffee locations looking for convenient online ordering and pickup.
+*   **Online Shoppers:** Customers nationwide seeking premium coffee subscriptions and merchandise.
+
+---
+
+## 3. Product Scope & Features
+
+Based on the existing pages ([index.html](file:///d:/BinarySpace/coffee%20shop/index.html), [Menu.html](file:///d:/BinarySpace/coffee%20shop/Menu.html), [checkOut.html](file:///d:/BinarySpace/coffee%20shop/checkOut.html)), the platform requires the following features and pages to be fully realized:
+
+### 3.1 Existing Features (Implemented)
+*   **Landing Page ([index.html](file:///d:/BinarySpace/coffee%20shop/index.html)):** Hero section, curated favorites, about section, lifestyle gallery, and customer testimonials.
+*   **Full Menu ([Menu.html](file:///d:/BinarySpace/coffee%20shop/Menu.html)):** Categorized view (Signature Brews, Espresso Bar, Pastries, Seasonal, Tea), add-to-cart functionality, and sticky category navigation.
+*   **Checkout Flow ([checkOut.html](file:///d:/BinarySpace/coffee%20shop/checkOut.html)):** Order summary, delivery method selection (Ship/Pickup), shipping address input, and payment processing form.
+
+### 3.2 Required Features (To be Implemented)
+
+#### 3.2.1 E-Commerce & Shopping
+*   **Shop/Merchandise Page:** A dedicated catalog for physical items like coffee beans, mugs, and brewing equipment.
+*   **Subscriptions Page:** Information and sign-up flow for recurring coffee deliveries.
+*   **Cart Drawer/Page:** A view to manage selected items, adjust quantities, and view order subtotals before proceeding to checkout.
+
+#### 3.2.2 Brand & Information
+*   **Our Story / About Us:** A detailed page expanding on the company's history, sourcing, and roasting philosophy.
+*   **Locations Directory:** A list of all cafes (Flagship Roastery, Boutique Cafe) with addresses, hours, maps, and specific cafe amenities.
+*   **Roasting Process:** An educational page detailing the artisanal roasting methods.
+*   **Careers:** Information on working at Artisan Coffee and current job openings.
+
+#### 3.2.3 User Account Management
+*   **Authentication Flow:** Login, Sign Up, and Password Reset pages.
+*   **User Dashboard:** A personalized hub for customers to view order history, manage subscriptions, save addresses, and update payment methods.
+
+#### 3.2.4 Special Services & Legal
+*   **Gift Cards:** Purchasing and managing digital/physical gift cards.
+*   **Legal Pages:** Privacy Policy, Terms of Service, and Shipping & Returns policies.
+
+---
+
+## 4. Design Guidelines & Aesthetics
+
+The application must adhere to the following design system to ensure a premium, unified experience.
+
+### 4.1 Color Palette
+The color palette should be harmonious, utilizing tailored HSL colors or sleek dark modes. Avoid generic, highly saturated colors.
+
+*   **Primary (Text/Accents):** Deep Coffee Brown (`#4a2e2b` / `#4A2C2A`)
+*   **Accent (Highlights/Buttons):** Soft Gold (`#C8A951` / `#c5a059` / `#D4AF37`)
+*   **Neutral Warm/Latte:** (`#D7B49E` / `#E7D2D0`)
+*   **Background (Light Mode):** Soft Cream / Off-White (`#f7f7f6` / `#FDFBF7`)
+*   **Background (Dark Mode):** Deep Charcoal / Espresso (`#1c1716` / `#211311`)
+
+### 4.2 Typography
+Use modern, highly legible web fonts (e.g., from Google Fonts).
+
+*   **Primary Font:** `Work Sans` (Weights: 300, 400, 500, 600, 700, 800, 900)
+*   **Styling:** Generous tracking (letter-spacing) on uppercase headings, strong typographic hierarchy, and comfortable reading line heights.
+
+### 4.3 Iconography
+*   **Library:** Google Material Symbols Outlined.
+*   **Style:** Minimalist, consistent stroke weight.
+
+### 4.4 UI/UX Principles
+*   **Rich Aesthetics:** Implement glassmorphism (backdrop-blur) on sticky headers and floating elements.
+*   **Dynamic Design:** Extensive use of smooth CSS transitions and micro-animations (e.g., image scaling on hover, button transforms, floating carts).
+*   **Imagery:** High-quality, atmospheric photography of coffee, cafe interiors, and people. Use subtle rounding (e.g., `rounded-xl`) for image containers.
+*   **Responsiveness:** Fluid layouts using CSS Grid and Flexbox, ensuring excellent experiences on mobile, tablet, and desktop.
+*   **Dark Mode Support:** Full native dark mode implementation across all components.
+
+---
+
+## 5. Technical Requirements
+
+*   **Core Stack:** HTML5, CSS3 (Vanilla or TailwindCSS as currently implemented), Vanilla JavaScript for logic.
+*   **Styling Framework:** TailwindCSS (via CDN currently, move to build process for production) with custom configuration defined in the HTML `<head>`.
+*   **SEO:** Semantic HTML structure, unique descriptive IDs, appropriate meta tags, and optimized asset loading.
+
+---
+
+## 6. Future Considerations (Phase 2)
+*   Integration with a headless CMS or e-commerce backend (e.g., Shopify, Stripe) for real-time inventory and secure payment processing.
+*   Implementation of an interactive map for the Locations page.
+*   Advanced user loyalty program features.

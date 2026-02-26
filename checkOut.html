@@ -38,20 +38,31 @@
 <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
 <div class="layout-container flex h-full grow flex-col">
 <!-- Navigation -->
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-10 py-5 bg-background-light/80 backdrop-blur-md sticky top-0 z-50">
-<div class="flex items-center gap-4 text-primary">
-<div class="size-8 flex items-center justify-center">
-<span class="material-symbols-outlined text-3xl">coffee</span>
+<!-- Sticky Navbar -->
+<header class="sticky top-0 z-50 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary dark:text-latte-beige">
+<span class="material-symbols-outlined text-4xl">coffee</span>
 </div>
-<h2 class="text-primary text-xl font-bold leading-tight tracking-[-0.015em]">Artisan Coffee</h2>
+<h1 class="text-2xl font-black tracking-tighter text-primary dark:text-slate-100 uppercase">Artisan</h1>
 </div>
-<div class="flex flex-1 justify-end gap-8">
-<nav class="hidden md:flex items-center gap-9">
-<a class="text-primary text-sm font-medium leading-normal hover:text-accent transition-colors" href="#">Shop</a>
-<a class="text-primary text-sm font-medium leading-normal hover:text-accent transition-colors" href="#">Subscriptions</a>
-<a class="text-primary text-sm font-medium leading-normal hover:text-accent transition-colors" href="#">Our Story</a>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="index.html">Home</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="Menu.html">Menu</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="our-story.html">About</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="roasting-process.html">Roasting</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="locations.html">Location</a>
 </nav>
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile portrait in a circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBkY2rjfXGLcCXWmY-FBvZk_2CjFaBb4Vlk1IDs0VIoF9xqhoWRQS9RRDBIN3bbA_hf81Dn5olkcZ7X5pDRZiu1g5lE3s9m5z-Uf-dX_OuJDUDsfSKgrHZzcugXSqOCB0z81nQkOzZGWGlPz8ni5Rx0xr_OQPX3UBvC6Mp-gYSjfWSpbaglOOLO4kZ7dlWlsRfGZ69hAbrSZ-d7SIQMqRJKQDOLVcPqdy0njxf_4aTQ68M5zxFvVi5z5jOgQicQFnG4UOTUq58mRyY");'></div>
+<div class="flex items-center gap-6">
+<div class="relative cursor-pointer group">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-background-light">3</span>
+</div>
+<button class="hidden lg:block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all uppercase tracking-wider">
+                    Join the Club
+                </button>
+</div>
 </div>
 </header>
 <main class="flex-1 flex flex-col max-w-[1200px] mx-auto w-full px-6 py-8">
@@ -213,25 +224,65 @@
 </div>
 </main>
 <!-- Footer -->
-<footer class="flex flex-col gap-6 px-10 py-12 text-center bg-primary/5 mt-12">
-<div class="flex flex-wrap items-center justify-center gap-6 md:flex-row md:justify-around">
-<a class="text-primary/70 text-base font-normal leading-normal hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="text-primary/70 text-base font-normal leading-normal hover:text-primary transition-colors" href="#">Terms of Service</a>
-<a class="text-primary/70 text-base font-normal leading-normal hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a>
+<footer class="bg-espresso-black text-white pt-24 pb-12 mt-12">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-latte-beige text-3xl">coffee</span>
+<h2 class="text-2xl font-black tracking-tighter uppercase">Artisan</h2>
 </div>
-<div class="flex flex-wrap justify-center gap-6">
-<a class="text-primary/60 hover:text-primary transition-colors" href="#">
-<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
-<path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
-</svg>
+<p class="text-slate-400 leading-relaxed">
+                        Elevating your daily coffee ritual with premium beans and soulful brewing. Visit us in the heart of the city.
+                    </p>
+<div class="flex gap-4">
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
 </a>
-<a class="text-primary/60 hover:text-primary transition-colors" href="#">
-<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
-<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"></path>
-</svg>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">chat</span>
 </a>
 </div>
-<p class="text-primary/50 text-sm font-normal leading-normal">© 2024 Artisan Coffee Co. Handcrafted for your mornings.</p>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Shop Coffee</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Gift Cards</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Roasting Process</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Location</h4>
+<div class="space-y-4 text-slate-400">
+<p>123 Roast Avenue,<br/>Bean District, NY 10001</p>
+<p class="pt-4">Mon - Fri: 7am - 8pm</p>
+<p>Sat - Sun: 8am - 9pm</p>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Join the Club</h4>
+<p class="text-sm text-slate-400 mb-6">Receive brewing tips and early access to new seasonal roasts.</p>
+<form class="space-y-4">
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Your email address" type="email"/>
+</div>
+<button class="w-full bg-primary py-3 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-primary/80 transition-all">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 text-center text-slate-500 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+<p>© 2024 Artisan Coffee Co. All rights reserved. Crafted with caffeine.</p>
+<div class="flex gap-6 justify-center">
+<a class="hover:text-white transition-colors" href="privacy-policy.html">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="terms-of-service.html">Terms of Service</a>
+</div>
+</div>
+</div>
 </footer>
 </div>
 </div>

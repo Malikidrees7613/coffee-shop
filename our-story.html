@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Artisan Coffee | Our Story</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4a2e2b",
+                        "accent-gold": "#C8A951",
+                        "latte-beige": "#D7B49E",
+                        "soft-cream": "#F5EBDD",
+                        "espresso-black": "#2E1F1B",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1c1716",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Work Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+
+<!-- Sticky Navbar -->
+<header class="sticky top-0 z-50 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary dark:text-latte-beige">
+<span class="material-symbols-outlined text-4xl">coffee</span>
+</div>
+<h1 class="text-2xl font-black tracking-tighter text-primary dark:text-slate-100 uppercase">Artisan</h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="index.html">Home</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="Menu.html">Menu</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="our-story.html">About</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="roasting-process.html">Roasting</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="locations.html">Location</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="relative cursor-pointer group">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-background-light">3</span>
+</div>
+<button class="hidden lg:block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all uppercase tracking-wider">
+                    Join the Club
+                </button>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-espresso-black/60 z-10 backdrop-blur-[2px]"></div>
+        <img alt="Coffee Roasting Facility" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"/>
+    </div>
+    <div class="relative z-20 text-center px-6 max-w-4xl mt-12">
+        <h2 class="text-accent-gold text-sm font-black tracking-[0.3em] uppercase mb-4">Our Heritage</h2>
+        <h1 class="text-white text-5xl md:text-7xl font-black mb-6 tracking-tight leading-none uppercase">
+            A Journey of <span class="text-accent-gold italic block mt-2">Craft & Community</span>
+        </h1>
+    </div>
+</section>
+
+<!-- Our Origins -->
+<section class="py-24 bg-soft-cream dark:bg-background-dark/50 px-6 lg:px-20">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+        <div class="lg:w-1/2 space-y-8">
+            <h3 class="text-4xl md:text-5xl font-black text-espresso-black dark:text-slate-100 tracking-tight leading-tight">It Started With a Single Bean</h3>
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                Founded in 2012 by two passionate coffee enthusiasts, Artisan Coffee began as a modest 200-square-foot roastery in the back of an old warehouse. Our singular mission was to bring out the natural, terroir-driven flavors of coffee beans without masking them behind dark, oily roasts.
+            </p>
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                We spent years traveling to the high-altitude farms of Ethiopia, Colombia, and Guatemala, forging direct relationships with the farmers who share our obsession with quality. Today, that direct-trade model remains the beating heart of everything we do.
+            </p>
+        </div>
+        <div class="lg:w-1/2 relative w-full">
+            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Coffee Farmers" class="rounded-2xl shadow-xl w-full h-[500px] object-cover hover:scale-[1.02] transition-transform duration-700"/>
+            <div class="absolute -bottom-8 -left-8 bg-white dark:bg-background-dark p-6 rounded-xl shadow-lg border border-primary/10 max-w-xs hidden md:block">
+                <p class="font-bold text-primary dark:text-slate-100 text-xl border-l-4 border-accent-gold pl-4 italic">"Quality is never an accident. It is always the result of intelligent effort."</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The Philosophy -->
+<section class="py-24 px-6 lg:px-20">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 max-w-2xl mx-auto">
+            <h2 class="text-primary dark:text-latte-beige text-sm font-black tracking-[0.3em] uppercase mb-4">Our Philosophy</h2>
+            <h3 class="text-4xl font-black text-espresso-black dark:text-slate-100 tracking-tight">Uncompromising Standards</h3>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="flex flex-col items-center text-center space-y-4 p-8 bg-white dark:bg-background-dark/20 rounded-2xl border border-primary/5 hover:shadow-xl transition-shadow">
+                <div class="size-16 rounded-full bg-latte-beige/20 text-accent-gold flex items-center justify-center mb-2">
+                    <span class="material-symbols-outlined text-3xl">handshake</span>
+                </div>
+                <h4 class="text-xl font-bold text-primary dark:text-slate-100">Direct Trade</h4>
+                <p class="text-slate-600 dark:text-slate-400">We work directly with farmers, paying premium prices to ensure sustainable practices and livable wages for their communities.</p>
+            </div>
+            <div class="flex flex-col items-center text-center space-y-4 p-8 bg-white dark:bg-background-dark/20 rounded-2xl border border-primary/5 hover:shadow-xl transition-shadow">
+                <div class="size-16 rounded-full bg-latte-beige/20 text-accent-gold flex items-center justify-center mb-2">
+                    <span class="material-symbols-outlined text-3xl">local_fire_department</span>
+                </div>
+                <h4 class="text-xl font-bold text-primary dark:text-slate-100">Small Batch Roasting</h4>
+                <p class="text-slate-600 dark:text-slate-400">Every batch is roasted by sight, sound, and smell using vintage cast-iron roasters to precisely curve the flavor profile.</p>
+            </div>
+            <div class="flex flex-col items-center text-center space-y-4 p-8 bg-white dark:bg-background-dark/20 rounded-2xl border border-primary/5 hover:shadow-xl transition-shadow">
+                <div class="size-16 rounded-full bg-latte-beige/20 text-accent-gold flex items-center justify-center mb-2">
+                    <span class="material-symbols-outlined text-3xl">eco</span>
+                </div>
+                <h4 class="text-xl font-bold text-primary dark:text-slate-100">Zero Waste Goal</h4>
+                <p class="text-slate-600 dark:text-slate-400">From compostable packaging to repurposing spent coffee grounds, we are committed to leaving a minimal environmental footprint.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-espresso-black text-white pt-24 pb-12">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-latte-beige text-3xl">coffee</span>
+<h2 class="text-2xl font-black tracking-tighter uppercase">Artisan</h2>
+</div>
+<p class="text-slate-400 leading-relaxed">
+                        Elevating your daily coffee ritual with premium beans and soulful brewing. Visit us in the heart of the city.
+                    </p>
+<div class="flex gap-4">
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">chat</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Shop Coffee</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Gift Cards</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Roasting Process</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Location</h4>
+<div class="space-y-4 text-slate-400">
+<p>123 Roast Avenue,<br/>Bean District, NY 10001</p>
+<p class="pt-4">Mon - Fri: 7am - 8pm</p>
+<p>Sat - Sun: 8am - 9pm</p>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Join the Club</h4>
+<p class="text-sm text-slate-400 mb-6">Receive brewing tips and early access to new seasonal roasts.</p>
+<form class="space-y-4">
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Your email address" type="email"/>
+</div>
+<button class="w-full bg-primary py-3 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-primary/80 transition-all">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 text-center text-slate-500 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+<p>© 2024 Artisan Coffee Co. All rights reserved. Crafted with caffeine.</p>
+<div class="flex gap-6 justify-center">
+<a class="hover:text-white transition-colors" href="privacy-policy.html">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="terms-of-service.html">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Artisan Coffee | Roasting Process</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4a2e2b",
+                        "accent-gold": "#C8A951",
+                        "latte-beige": "#D7B49E",
+                        "soft-cream": "#F5EBDD",
+                        "espresso-black": "#2E1F1B",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1c1716",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Work Sans', sans-serif; }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            bottom: -2rem;
+            left: 2rem;
+            width: 2px;
+            background: rgba(74, 46, 43, 0.1);
+            z-index: 0;
+        }
+        @media (min-width: 1024px) {
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white overflow-x-hidden">
+
+<!-- Sticky Navbar -->
+<header class="sticky top-0 z-50 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary dark:text-latte-beige">
+<span class="material-symbols-outlined text-4xl">coffee</span>
+</div>
+<h1 class="text-2xl font-black tracking-tighter text-primary dark:text-slate-100 uppercase">Artisan</h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="index.html">Home</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="Menu.html">Menu</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="our-story.html">About</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="roasting-process.html">Roasting</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="locations.html">Location</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="relative cursor-pointer group">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-background-light">3</span>
+</div>
+<button class="hidden lg:block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all uppercase tracking-wider">
+                    Join the Club
+                </button>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-espresso-black/70 z-10 backdrop-blur-[2px]"></div>
+        <img alt="Coffee Beans Roasting" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"/>
+    </div>
+    <div class="relative z-20 text-center px-6 max-w-4xl">
+        <h2 class="text-accent-gold text-sm font-black tracking-[0.3em] uppercase mb-4">The Craft</h2>
+        <h1 class="text-white text-5xl md:text-7xl font-black mb-6 tracking-tight leading-none uppercase">
+            Transforming <br/> <span class="text-accent-gold italic">The Bean</span>
+        </h1>
+        <p class="text-white/90 text-lg md:text-xl font-light max-w-2xl mx-auto">From raw, green seeds to complex, aromatic coffee. Discover the science and art behind our roasting process.</p>
+    </div>
+</section>
+
+<!-- Timeline Section -->
+<section class="py-24 px-6 lg:px-20 relative">
+    <div class="max-w-5xl mx-auto timeline-line relative">
+        
+        <!-- Step 1 -->
+        <div class="relative flex flex-col lg:flex-row items-center justify-between gap-12 mb-24 z-10">
+            <div class="lg:w-1/2 flex justify-start lg:justify-end lg:pr-12 w-full order-2 lg:order-1 text-left lg:text-right">
+                <div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-xl border border-primary/5 hover:-translate-y-2 transition-transform duration-500">
+                    <h3 class="text-accent-gold font-bold uppercase tracking-widest text-sm mb-2">Phase 01</h3>
+                    <h4 class="text-3xl font-black text-espresso-black dark:text-slate-100 mb-4 tracking-tight">Green Bean Selection</h4>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Before heat ever touches the bean, we meticulously inspect our raw shipments. We look for perfect density and moisture content. Only the top 5% of specialty-grade, direct-trade green arabica beans make it to our cast-iron roaster.</p>
+                </div>
+            </div>
+            <div class="absolute left-8 lg:left-1/2 -translate-x-1/2 size-16 bg-primary border-4 border-background-light dark:border-background-dark rounded-full flex items-center justify-center shadow-lg text-white font-black z-20">1</div>
+            <div class="lg:w-1/2 lg:pl-12 w-full order-1 lg:order-2">
+                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Green Coffee Beans" class="rounded-2xl shadow-lg w-full h-[300px] object-cover"/>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative flex flex-col lg:flex-row items-center justify-between gap-12 mb-24 z-10">
+            <div class="lg:w-1/2 lg:pr-12 w-full text-left">
+                <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vintage Roaster" class="rounded-2xl shadow-lg w-full h-[300px] object-cover"/>
+            </div>
+            <div class="absolute left-8 lg:left-1/2 -translate-x-1/2 size-16 bg-primary border-4 border-background-light dark:border-background-dark rounded-full flex items-center justify-center shadow-lg text-white font-black z-20">2</div>
+            <div class="lg:w-1/2 flex justify-start lg:pl-12 w-full">
+                <div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-xl border border-primary/5 hover:-translate-y-2 transition-transform duration-500">
+                    <h3 class="text-accent-gold font-bold uppercase tracking-widest text-sm mb-2">Phase 02</h3>
+                    <h4 class="text-3xl font-black text-espresso-black dark:text-slate-100 mb-4 tracking-tight">The Maillard Reaction</h4>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">As the beans enter the drum at 400°F, they undergo complex chemical changes. The Maillard reaction beautifully browns the bean, developing hundreds of aromatic compounds. Our Master Roaster controls airflow and temperature minute by minute.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative flex flex-col lg:flex-row items-center justify-between gap-12 mb-24 z-10">
+            <div class="lg:w-1/2 flex justify-start lg:justify-end lg:pr-12 w-full order-2 lg:order-1 text-left lg:text-right">
+                <div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-xl border border-primary/5 hover:-translate-y-2 transition-transform duration-500">
+                    <h3 class="text-accent-gold font-bold uppercase tracking-widest text-sm mb-2">Phase 03</h3>
+                    <h4 class="text-3xl font-black text-espresso-black dark:text-slate-100 mb-4 tracking-tight">First Crack & Drop</h4>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">An audible 'crack' signals that water vapor is expanding inside the bean. Timing the 'drop' from the roaster to the cooling tray is the most critical 30 seconds of the process, locking in the intended delicate floral or deep chocolate notes.</p>
+                </div>
+            </div>
+            <div class="absolute left-8 lg:left-1/2 -translate-x-1/2 size-16 bg-primary border-4 border-background-light dark:border-background-dark rounded-full flex items-center justify-center shadow-lg text-white font-black z-20">3</div>
+            <div class="lg:w-1/2 lg:pl-12 w-full order-1 lg:order-2">
+                <img src="https://images.unsplash.com/photo-1616053335553-61b4020a59a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beans falling into tray" class="rounded-2xl shadow-lg w-full h-[300px] object-cover"/>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative flex flex-col lg:flex-row items-center justify-between gap-12 z-10">
+            <div class="lg:w-1/2 lg:pr-12 w-full text-left">
+                <img src="https://images.unsplash.com/photo-1610484826966-5d6bc9f056d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee Bags" class="rounded-2xl shadow-lg w-full h-[300px] object-cover"/>
+            </div>
+            <div class="absolute left-8 lg:left-1/2 -translate-x-1/2 size-16 bg-primary border-4 border-background-light dark:border-background-dark rounded-full flex items-center justify-center shadow-lg text-white font-black z-20">4</div>
+            <div class="lg:w-1/2 flex justify-start lg:pl-12 w-full">
+                <div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-xl border border-primary/5 hover:-translate-y-2 transition-transform duration-500">
+                    <h3 class="text-accent-gold font-bold uppercase tracking-widest text-sm mb-2">Phase 04</h3>
+                    <h4 class="text-3xl font-black text-espresso-black dark:text-slate-100 mb-4 tracking-tight">Rest & Degas</h4>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Freshly roasted coffee needs time to breathe. We rest our beans in specialized valved bags for 24 to 72 hours, allowing excess carbon dioxide to escape without letting destabilizing oxygen in. This ensures peak flavor upon brewing.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-espresso-black text-white pt-24 pb-12">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-latte-beige text-3xl">coffee</span>
+<h2 class="text-2xl font-black tracking-tighter uppercase">Artisan</h2>
+</div>
+<p class="text-slate-400 leading-relaxed">
+                        Elevating your daily coffee ritual with premium beans and soulful brewing. Visit us in the heart of the city.
+                    </p>
+<div class="flex gap-4">
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">chat</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Shop Coffee</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Gift Cards</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Roasting Process</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Location</h4>
+<div class="space-y-4 text-slate-400">
+<p>123 Roast Avenue,<br/>Bean District, NY 10001</p>
+<p class="pt-4">Mon - Fri: 7am - 8pm</p>
+<p>Sat - Sun: 8am - 9pm</p>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Join the Club</h4>
+<p class="text-sm text-slate-400 mb-6">Receive brewing tips and early access to new seasonal roasts.</p>
+<form class="space-y-4">
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Your email address" type="email"/>
+</div>
+<button class="w-full bg-primary py-3 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-primary/80 transition-all">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 text-center text-slate-500 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+<p>© 2024 Artisan Coffee Co. All rights reserved. Crafted with caffeine.</p>
+<div class="flex gap-6 justify-center">
+<a class="hover:text-white transition-colors" href="privacy-policy.html">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="terms-of-service.html">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Artisan Coffee | Careers</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4a2e2b",
+                        "accent-gold": "#C8A951",
+                        "latte-beige": "#D7B49E",
+                        "soft-cream": "#F5EBDD",
+                        "espresso-black": "#2E1F1B",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#1c1716",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Work Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+
+<!-- Sticky Navbar -->
+<header class="sticky top-0 z-50 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary dark:text-latte-beige">
+<span class="material-symbols-outlined text-4xl">coffee</span>
+</div>
+<h1 class="text-2xl font-black tracking-tighter text-primary dark:text-slate-100 uppercase">Artisan</h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="Menu.html">Menu</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="our-story.html">About</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="roasting-process.html">Roasting</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="locations.html">Location</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="relative cursor-pointer group">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-background-light">3</span>
+</div>
+<button class="hidden lg:block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all uppercase tracking-wider">
+                    Join the Club
+                </button>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative h-[50vh] w-full flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-espresso-black/60 z-10 backdrop-blur-[1px]"></div>
+        <img alt="Baristas working together" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"/>
+    </div>
+    <div class="relative z-20 text-center px-6 max-w-4xl">
+        <h2 class="text-accent-gold text-sm font-black tracking-[0.3em] uppercase mb-4">Careers</h2>
+        <h1 class="text-white text-5xl md:text-7xl font-black mb-6 tracking-tight leading-none uppercase">
+            Join The <span class="text-accent-gold italic">Family</span>
+        </h1>
+        <p class="text-white/90 text-lg md:text-xl font-light max-w-2xl mx-auto">We are always looking for passionate people who care about craft, community, and incredible coffee.</p>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="py-24 px-6 lg:px-20 bg-soft-cream/30 dark:bg-background-dark/30">
+    <div class="max-w-7xl mx-auto text-center mb-16">
+        <h3 class="text-3xl font-black text-espresso-black dark:text-slate-100 tracking-tight">Why Work With Us?</h3>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-sm border border-primary/5 flex flex-col items-center text-center">
+            <span class="material-symbols-outlined text-4xl text-accent-gold mb-4">school</span>
+            <h4 class="font-bold text-lg mb-2">Education</h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Comprehensive SCA-certified barista training and ongoing tasting seminars.</p>
+        </div>
+        <div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-sm border border-primary/5 flex flex-col items-center text-center">
+            <span class="material-symbols-outlined text-4xl text-accent-gold mb-4">health_and_safety</span>
+            <h4 class="font-bold text-lg mb-2">Benefits</h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Full medical, dental, and vision insurance for all full-time employees.</p>
+        </div>
+        <div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-sm border border-primary/5 flex flex-col items-center text-center">
+            <span class="material-symbols-outlined text-4xl text-accent-gold mb-4">trending_up</span>
+            <h4 class="font-bold text-lg mb-2">Growth</h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Clear pathways from barista to management, roasting, or quality control.</p>
+        </div>
+        <div class="bg-white dark:bg-background-dark p-8 rounded-2xl shadow-sm border border-primary/5 flex flex-col items-center text-center">
+            <span class="material-symbols-outlined text-4xl text-accent-gold mb-4">local_cafe</span>
+            <h4 class="font-bold text-lg mb-2">Perks</h4>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Free daily drinks, monthly whole bean allowance, and partner discounts.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Open Positions -->
+<section class="py-24 px-6 lg:px-20">
+    <div class="max-w-4xl mx-auto">
+        <h3 class="text-3xl font-black text-espresso-black dark:text-slate-100 tracking-tight mb-12 border-b border-primary/10 pb-4">Open Positions</h3>
+        
+        <div class="space-y-6">
+            <!-- Job 1 -->
+            <div class="group bg-white dark:bg-background-dark border border-primary/10 rounded-2xl p-6 lg:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary/30 transition-colors shadow-sm hover:shadow-md">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="text-xl font-bold text-primary dark:text-slate-100">Senior Barista</h4>
+                        <span class="bg-accent-gold/20 text-accent-gold text-xs font-bold px-2 py-1 rounded">Full-Time</span>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Flagship Roastery • Seattle, WA</p>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm max-w-2xl leading-relaxed">Looking for an experienced barista with deep knowledge of dial-in parameters, latte art, and high-volume workflow to lead our morning rush.</p>
+                </div>
+                <button class="shrink-0 bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors uppercase tracking-widest text-sm self-start md:self-center">
+                    Apply Now
+                </button>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="group bg-white dark:bg-background-dark border border-primary/10 rounded-2xl p-6 lg:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary/30 transition-colors shadow-sm hover:shadow-md">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="text-xl font-bold text-primary dark:text-slate-100">Roaster Apprentice</h4>
+                        <span class="bg-accent-gold/20 text-accent-gold text-xs font-bold px-2 py-1 rounded">Part-Time</span>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Flagship Roastery • Seattle, WA</p>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm max-w-2xl leading-relaxed">Assist our Master Roaster with green bean inventory, sample roasting, and cupping. A perfect entry point for those wanting to learn the science of roasting.</p>
+                </div>
+                <button class="shrink-0 bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors uppercase tracking-widest text-sm self-start md:self-center">
+                    Apply Now
+                </button>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="group bg-white dark:bg-background-dark border border-primary/10 rounded-2xl p-6 lg:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-primary/30 transition-colors shadow-sm hover:shadow-md">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="text-xl font-bold text-primary dark:text-slate-100">Cafe Manager</h4>
+                        <span class="bg-accent-gold/20 text-accent-gold text-xs font-bold px-2 py-1 rounded">Full-Time</span>
+                    </div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Boutique Cafe • Portland, OR</p>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm max-w-2xl leading-relaxed">We need an empathetic leader to manage daily operations, staff scheduling, inventory, and ensure our high standards of hospitality are met every day.</p>
+                </div>
+                <button class="shrink-0 bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-primary/90 transition-colors uppercase tracking-widest text-sm self-start md:self-center">
+                    Apply Now
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-espresso-black text-white pt-24 pb-12">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-latte-beige text-3xl">coffee</span>
+<h2 class="text-2xl font-black tracking-tighter uppercase">Artisan</h2>
+</div>
+<p class="text-slate-400 leading-relaxed">
+                        Elevating your daily coffee ritual with premium beans and soulful brewing. Visit us in the heart of the city.
+                    </p>
+<div class="flex gap-4">
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">chat</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Shop Coffee</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Gift Cards</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Roasting Process</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Location</h4>
+<div class="space-y-4 text-slate-400">
+<p>123 Roast Avenue,<br/>Bean District, NY 10001</p>
+<p class="pt-4">Mon - Fri: 7am - 8pm</p>
+<p>Sat - Sun: 8am - 9pm</p>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Join the Club</h4>
+<p class="text-sm text-slate-400 mb-6">Receive brewing tips and early access to new seasonal roasts.</p>
+<form class="space-y-4">
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Your email address" type="email"/>
+</div>
+<button class="w-full bg-primary py-3 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-primary/80 transition-all">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 text-center text-slate-500 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+<p>© 2024 Artisan Coffee Co. All rights reserved. Crafted with caffeine.</p>
+<div class="flex gap-6 justify-center">
+<a class="hover:text-white transition-colors" href="privacy-policy.html">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="terms-of-service.html">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
