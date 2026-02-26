@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Artisan Coffee Checkout Flow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4A2C2A", // Deep Coffee Brown
+                        "accent": "#D4AF37",  // Soft Gold
+                        "background-light": "#FDFBF7", // Soft Cream
+                        "background-dark": "#211311",
+                        "neutral-warm": "#E7D2D0",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Work Sans', sans-serif; }
+        .progress-step-active { color: #4A2C2A; font-weight: 600; border-bottom: 2px solid #4A2C2A; }
+        .progress-step-inactive { color: #97554E; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-10 py-5 bg-background-light/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">coffee</span>
+</div>
+<h2 class="text-primary text-xl font-bold leading-tight tracking-[-0.015em]">Artisan Coffee</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-primary text-sm font-medium leading-normal hover:text-accent transition-colors" href="#">Shop</a>
+<a class="text-primary text-sm font-medium leading-normal hover:text-accent transition-colors" href="#">Subscriptions</a>
+<a class="text-primary text-sm font-medium leading-normal hover:text-accent transition-colors" href="#">Our Story</a>
+</nav>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile portrait in a circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBkY2rjfXGLcCXWmY-FBvZk_2CjFaBb4Vlk1IDs0VIoF9xqhoWRQS9RRDBIN3bbA_hf81Dn5olkcZ7X5pDRZiu1g5lE3s9m5z-Uf-dX_OuJDUDsfSKgrHZzcugXSqOCB0z81nQkOzZGWGlPz8ni5Rx0xr_OQPX3UBvC6Mp-gYSjfWSpbaglOOLO4kZ7dlWlsRfGZ69hAbrSZ-d7SIQMqRJKQDOLVcPqdy0njxf_4aTQ68M5zxFvVi5z5jOgQicQFnG4UOTUq58mRyY");'></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col max-w-[1200px] mx-auto w-full px-6 py-8">
+<!-- Progress Stepper -->
+<div class="mb-12">
+<div class="flex items-center justify-center gap-8 md:gap-16">
+<div class="flex items-center gap-2 progress-step-inactive">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="text-sm">Cart</span>
+</div>
+<div class="h-px w-12 bg-primary/20"></div>
+<div class="flex items-center gap-2 progress-step-active pb-1">
+<span class="material-symbols-outlined">person_pin_circle</span>
+<span class="text-sm">Details</span>
+</div>
+<div class="h-px w-12 bg-primary/20"></div>
+<div class="flex items-center gap-2 progress-step-inactive">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm">Payment</span>
+</div>
+</div>
+</div>
+<!-- Content Split -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Side: Order Summary -->
+<div class="lg:col-span-5 flex flex-col gap-6 bg-primary/5 p-8 rounded-xl h-fit">
+<h3 class="text-2xl font-bold text-primary mb-2">Order Summary</h3>
+<div class="flex flex-col gap-6">
+<!-- Item 1 -->
+<div class="flex gap-4 items-center">
+<div class="size-20 bg-center bg-cover rounded-lg shrink-0 border border-primary/10" data-alt="Bag of whole bean coffee beans" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADALQujqpDNpeAjWfacTAARMPjD99GK6oVo9k_GZFqlHcGUkLFFWPoo2CVQATj8VfJD9R7wj2ExrZixyys4lTBDsHKdNMipcXZCxd4TqTR6q4To0Uy5yfRh5c-oibjPZbd_E2I1eHK_AsWyBjT28bueBkLQB2GuElvnAkIhhZqDg6FL_wkOZLNeAqAAqtS5lST2jmsNAGPkUNxhYGUF-0OdV7abLgCuujbhRqMWfz0LmqOlcFWPCWnMuG3Z_Dejwu-McyWeNMVdh4");'></div>
+<div class="flex-1">
+<h4 class="font-semibold text-primary">Ethiopian Yirgacheffe</h4>
+<p class="text-xs text-slate-500 uppercase tracking-wider">Whole Bean · 250g</p>
+<div class="flex justify-between items-center mt-1">
+<span class="text-sm font-medium">Qty: 2</span>
+<span class="text-accent font-bold">$36.00</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4 items-center">
+<div class="size-20 bg-center bg-cover rounded-lg shrink-0 border border-primary/10" data-alt="Handcrafted ceramic coffee mug" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTo1HF97IRfBNWebq5wd8fF4rxk0nokuJ8IJSuJkg48nlizHBWkMQHaiv72M6i8dVc_joCZ5-2mdpF2qWq_NurM0XK5lEotEnN5FrknhM7XdMc4vSNRq9uc_jb3T6TuoeU_I1DeFzQqW5ixc5btUnlbNBJ_GtpxKeGq9G0qnYV6LQ8PdsgdzzLWh9opxzCakUmwk2SHpNkE8x6aT01E0qTImVC6n9hiOmnJTH2Z6HEcUUCECHrZtT--BADvpO8viUjJcAtQOMOfjY");'></div>
+<div class="flex-1">
+<h4 class="font-semibold text-primary">Ceramic Artisan Mug</h4>
+<p class="text-xs text-slate-500 uppercase tracking-wider">Sandstone Matte</p>
+<div class="flex justify-between items-center mt-1">
+<span class="text-sm font-medium">Qty: 1</span>
+<span class="text-accent font-bold">$24.00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="h-px bg-primary/10 my-2"></div>
+<div class="space-y-3">
+<div class="flex justify-between text-slate-600">
+<span>Subtotal</span>
+<span>$60.00</span>
+</div>
+<div class="flex justify-between text-slate-600">
+<span>Shipping</span>
+<span class="text-green-600 font-medium">Free</span>
+</div>
+<div class="flex justify-between text-slate-600">
+<span>Estimated Tax</span>
+<span>$4.80</span>
+</div>
+<div class="flex justify-between text-xl font-bold text-primary pt-2">
+<span>Total</span>
+<span>$64.80</span>
+</div>
+</div>
+<div class="bg-accent/10 border border-accent/20 p-4 rounded-lg mt-4">
+<p class="text-xs text-primary/80 italic">"Grown with care, roasted with passion, delivered to your doorstep."</p>
+</div>
+</div>
+<!-- Right Side: Checkout Form -->
+<div class="lg:col-span-7">
+<form class="flex flex-col gap-8">
+<!-- Delivery/Pickup -->
+<section>
+<h3 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">local_shipping</span>
+                                Delivery Method
+                            </h3>
+<div class="grid grid-cols-2 gap-4">
+<label class="relative flex flex-col p-4 border-2 border-primary bg-primary/5 rounded-xl cursor-pointer">
+<input checked="" class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="method" type="radio"/>
+<span class="font-bold text-primary">Ship to Address</span>
+<span class="text-xs text-slate-500 mt-1">Standard (3-5 business days)</span>
+</label>
+<label class="relative flex flex-col p-4 border-2 border-primary/10 hover:border-primary/30 rounded-xl cursor-pointer transition-all">
+<input class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="method" type="radio"/>
+<span class="font-bold text-primary">In-store Pickup</span>
+<span class="text-xs text-slate-500 mt-1">Ready in 2 hours</span>
+</label>
+</div>
+</section>
+<!-- Shipping Address -->
+<section>
+<h3 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">home</span>
+                                Shipping Information
+                            </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="text-sm font-medium text-slate-700">Full Name</label>
+<input class="rounded-lg border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary bg-transparent py-3" placeholder="John Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="text-sm font-medium text-slate-700">Street Address</label>
+<input class="rounded-lg border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary bg-transparent py-3" placeholder="123 Coffee Lane" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700">City</label>
+<input class="rounded-lg border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary bg-transparent py-3" placeholder="Seattle" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700">Zip Code</label>
+<input class="rounded-lg border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary bg-transparent py-3" placeholder="98101" type="text"/>
+</div>
+</div>
+</section>
+<!-- Payment -->
+<section>
+<h3 class="text-xl font-bold text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">credit_card</span>
+                                Payment Method
+                            </h3>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700">Card Number</label>
+<div class="relative">
+<input class="w-full rounded-lg border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary bg-transparent py-3 pr-12" placeholder="0000 0000 0000 0000" type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1">
+<span class="material-symbols-outlined text-slate-400">credit_card</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700">Expiry Date</label>
+<input class="rounded-lg border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary bg-transparent py-3" placeholder="MM/YY" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700">CVV</label>
+<input class="rounded-lg border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary bg-transparent py-3" placeholder="123" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<button class="bg-primary text-background-light py-5 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 mt-4 group" type="submit">
+                            Complete Order
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-slate-400">By clicking "Complete Order", you agree to our Terms of Service.</p>
+</form>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="flex flex-col gap-6 px-10 py-12 text-center bg-primary/5 mt-12">
+<div class="flex flex-wrap items-center justify-center gap-6 md:flex-row md:justify-around">
+<a class="text-primary/70 text-base font-normal leading-normal hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-primary/70 text-base font-normal leading-normal hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-primary/70 text-base font-normal leading-normal hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-primary/60 hover:text-primary transition-colors" href="#">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
+</svg>
+</a>
+<a class="text-primary/60 hover:text-primary transition-colors" href="#">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"></path>
+</svg>
+</a>
+</div>
+<p class="text-primary/50 text-sm font-normal leading-normal">© 2024 Artisan Coffee Co. Handcrafted for your mornings.</p>
+</footer>
+</div>
+</div>
+</body></html>

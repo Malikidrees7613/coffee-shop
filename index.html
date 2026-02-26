@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Artisan Coffee | Freshly Brewed Happiness</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#4a2e2b",
+                "accent-gold": "#C8A951",
+                "latte-beige": "#D7B49E",
+                "soft-cream": "#F5EBDD",
+                "espresso-black": "#2E1F1B",
+                "background-light": "#f7f7f6",
+                "background-dark": "#1c1716",
+              },
+              fontFamily: {
+                "display": ["Work Sans", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+<style>
+        body { font-family: 'Work Sans', sans-serif; }
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-auto-rows: 200px;
+            gap: 1rem;
+        }
+        .masonry-item-tall { grid-row: span 2; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+<!-- Sticky Navbar -->
+<header class="sticky top-0 z-50 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary dark:text-latte-beige">
+<span class="material-symbols-outlined text-4xl">coffee</span>
+</div>
+<h1 class="text-2xl font-black tracking-tighter text-primary dark:text-slate-100 uppercase">Artisan</h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="#menu">Menu</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="#about">About</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="#gallery">Gallery</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="#location">Location</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="relative cursor-pointer group">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-background-light">3</span>
+</div>
+<button class="hidden lg:block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all uppercase tracking-wider">
+                    Join the Club
+                </button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-espresso-black/50 z-10"></div>
+<img alt="Cafe Interior" class="w-full h-full object-cover" data-alt="Modern cozy café interior with wooden tables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgUMpQ7GH1BM9kQuCUKev-hoXSjB3fmq0oxGGO3tN2pUyyOSBBA-qG4bfocNvs8H6soNWjHyOdM4nSaEUJmDdkm01dKjm6wDQcRutB7llGc0pUKq4YIcqxB6sSaAVUFQRAkra9ju-gfpoJ9zI3OiIOEG5fW5gDpeeAlBHy8efAkZzR-2JEjSH5JP8V3le7_ExEBP3hKe5ycD3Dg6BauZoGmhFnTcX07zKYyeqswwW8M-Dojb0XIUDM0Ifh-2Nx-VwABqw9jczmfUI"/>
+</div>
+<div class="relative z-20 text-center px-6 max-w-4xl">
+<h1 class="text-white text-5xl md:text-7xl font-black mb-6 tracking-tight leading-none uppercase">
+                Freshly Brewed <span class="text-accent-gold italic">Happiness</span>
+</h1>
+<p class="text-white/90 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                Experience the art of premium coffee in every sip. Crafted with passion, served with warmth in our artisanal sanctuary.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto bg-primary text-white px-10 py-4 rounded-lg font-bold text-base hover:scale-105 transition-transform uppercase tracking-widest">
+                    Order Now
+                </button>
+<button class="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/30 px-10 py-4 rounded-lg font-bold text-base hover:bg-white/20 transition-all uppercase tracking-widest">
+                    View Menu
+                </button>
+</div>
+</div>
+</section>
+<!-- Featured Menu Section -->
+<section class="py-24 bg-soft-cream dark:bg-background-dark/50" id="menu">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-primary dark:text-latte-beige text-sm font-black tracking-[0.3em] uppercase mb-4">Our Selection</h2>
+<h3 class="text-4xl md:text-5xl font-black text-espresso-black dark:text-slate-100 tracking-tight">Curated Favorites</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Product Card 1 -->
+<div class="group bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-square overflow-hidden">
+<img alt="Signature Espresso" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Double shot espresso in ceramic cup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCJqUL2_oBwfTdX4bd2kjlp3vswBNiWER8b2KL599oZP8aZfJZXWV0Xr2W7PGuafaqSmunsqW9mhbjY93samnK6lFF-FkHWoftyMpoOgAMOAIo-PsK56Ni9uYl4Plis4ZWW6kIAx0Sq8tDl_BDq_TQxhxsIOrK5pEhtvSUlUJW6xNnZ2PCHDedPxkvkTC_iP2vLiH_FGOm4qlGIvWTrMidLtz2-wP2FGgtZs4BfcbMhNBy28JmImYgRAOkgF4bN_k3oZRo_JEe5LQ"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h4 class="text-lg font-bold text-espresso-black dark:text-slate-100">Signature Espresso</h4>
+<span class="text-primary font-bold">$4.50</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Rich, full-bodied with notes of dark chocolate and caramel.</p>
+<button class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
+<span class="material-symbols-outlined text-sm group-hover/btn:rotate-90 transition-transform">add</span>
+                            Add to Order
+                        </button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-square overflow-hidden">
+<img alt="Velvet Latte" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Latte with heart-shaped foam art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxcsOf9lyOZmlz5KUeM_kFyK_y7k5vL0IXYmpQ0WYTydNKewIxY7hA2B6TX5BCVObeZ5wWdLY6eENHjo8Yo-HT-ksKvPMbQM9COqMiTZSSPoh3he2sKUnbdU3dFYxEfaniB0UBgHaSk77aS9ZmRzrtwqF9AqdryzQ_5fAAQDKYiDmjfSXKE2hughEmQzHF9N9tq_goGOE6ub2PIGA4z1fc3jLR-8ELjhvUIqe8LAareruFZ8ejkBGw4LX55gPey-FCk8NIUW5Q4co"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h4 class="text-lg font-bold text-espresso-black dark:text-slate-100">Velvet Latte</h4>
+<span class="text-primary font-bold">$5.50</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Silky steamed milk poured over our signature roast.</p>
+<button class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
+<span class="material-symbols-outlined text-sm group-hover/btn:rotate-90 transition-transform">add</span>
+                            Add to Order
+                        </button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-square overflow-hidden">
+<img alt="Cold Brew" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Glass of cold brew coffee with ice" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWRLCCLi8O7YlNjjTnuR59eLphE8Kk6drx1D5yif9ThVpCYpUx1octVlWr4KrvqA8LhRFQMPM2TnE1WxQbNDGXeVZY6oP-I2upi3DLnO0gNYAFIY-1_CG9p62_KcKzAxuTfW_i6A01pqKpPVJkdNz-SYKqKe22euCfQ2jduzmnAGLOsfHMKJbp3oz9UECyYIxCqzUTyfMx0i9MMIFkg7GVyBGPzd8oJe6J24hlGRV5VnOZOsuD7VVfpX4k20TxzkL6CFJxb1yDuNo"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h4 class="text-lg font-bold text-espresso-black dark:text-slate-100">Artisan Cold Brew</h4>
+<span class="text-primary font-bold">$5.00</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Slow-steeped for 18 hours for maximum smoothness.</p>
+<button class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
+<span class="material-symbols-outlined text-sm group-hover/btn:rotate-90 transition-transform">add</span>
+                            Add to Order
+                        </button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+<div class="relative aspect-square overflow-hidden">
+<img alt="Golden Mocha" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Mocha coffee with chocolate drizzle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaPX5-HSCd6UdGv-G2lEUWlL5n3TjVCKaFi9a5iDsz2GD8teVdTS3ywW5yopg3o85XH2i5gVEzP6N6Ad_sMpqc5PXKKTs7MRT0Y8Ur2atzkh1iunLMQ8iMbsapjS0vq0YHcD6R-kKh97-JB97h_IDZKuGQpvx63ud-xCNofMAYYMsI3nKmTe-xFHuSAsfxtpu71jEhW5veD8kYDCUnvXRhX_Y-dc9jIFkeSCvcIKL70zgx-6MjB1YbjrPT1qOmGiwUDkRqpVJyqSc"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h4 class="text-lg font-bold text-espresso-black dark:text-slate-100">Golden Mocha</h4>
+<span class="text-primary font-bold">$6.00</span>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">A decadent blend of espresso, dark cocoa, and gold leaf flakes.</p>
+<button class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
+<span class="material-symbols-outlined text-sm group-hover/btn:rotate-90 transition-transform">add</span>
+                            Add to Order
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24 overflow-hidden" id="about">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2 relative">
+<div class="absolute -top-6 -left-6 w-32 h-32 bg-latte-beige/30 rounded-full blur-3xl"></div>
+<div class="relative rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Brewing Coffee" class="w-full h-[600px] object-cover hover:scale-105 transition-transform duration-700" data-alt="Barista carefully pouring water over coffee grounds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUoL3aPbkvoalkpvIugduI9cvm46IBGKn6ev00mP4YHwpyKmDMBrFvgenMW0q5AgIpkCNNML-v51q6pMbgwGNV3rNZ13zyh5E1i2ZMOzh1Xd1LXLvN272LGT3wLfzv2UNPfxmKnVAKk8D36G4zxhjs4D7wYh4Zy_WMl6lgDJVN9sdFgak-GuRmCce9zBlOnlEx2CrxegU2XFrgrufWBMUvpDkPjOc85MANWrWmxNr4ZJlxewABWm3kGrEwH3n7gsm8Z1cU4DC5_5Y"/>
+</div>
+<div class="absolute -bottom-10 -right-10 bg-primary p-8 rounded-xl text-white hidden md:block">
+<p class="text-4xl font-black mb-1">12+</p>
+<p class="text-xs uppercase tracking-widest font-bold text-latte-beige">Years of Roasting</p>
+</div>
+</div>
+<div class="lg:w-1/2 space-y-8">
+<div class="space-y-4">
+<h2 class="text-primary dark:text-latte-beige text-sm font-black tracking-[0.3em] uppercase">Our Craft</h2>
+<h3 class="text-4xl md:text-5xl font-black text-espresso-black dark:text-slate-100 tracking-tight leading-tight">From Bean to Soul</h3>
+</div>
+<p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                        At Artisan, we believe that coffee is more than just a morning ritual. It's an art form that begins in the fertile highlands of Ethiopia and Colombia, and culminates in our vintage roastery here at home.
+                    </p>
+<p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Each batch is small-roasted to perfection, ensuring that the unique characteristics of every bean are preserved. Our baristas are modern craftsmen, dedicated to the precision of temperature, timing, and texture.
+                    </p>
+<div class="pt-6">
+<button class="flex items-center gap-3 text-primary dark:text-latte-beige font-black uppercase tracking-widest hover:translate-x-2 transition-transform">
+                            Learn more about our heritage
+                            <span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery & Testimonials -->
+<section class="py-24 bg-latte-beige/10" id="gallery">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-primary dark:text-latte-beige text-sm font-black tracking-[0.3em] uppercase mb-4">Lifestlye</h2>
+<h3 class="text-4xl font-black text-espresso-black dark:text-slate-100 tracking-tight">The Artisan Life</h3>
+</div>
+<!-- Masonry Grid -->
+<div class="masonry-grid mb-24">
+<div class="rounded-xl overflow-hidden">
+<img alt="Coffee Cup" class="w-full h-full object-cover" data-alt="Close up of a coffee cup on wood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkR7nAappFZ7b5opvNA2giBQDQHGwUGUn0XqG9DqxDN-jNtJpj_9aAMzPX0e8B7UHl6TQsKg2HBDF8DCTdCryYIA8Mi1ibTZhQ6eXiiaaWh36XqsFfcm9okcV5h1iOx42TjQX4I1NjFe5Rid9bGIlPWavSfzqu1nSLG-3txYSwD5xWnLkOLE_5lwODcuWWvwdYSneOEfs36Z9lEvvDG6qUzt6tLkHKZgQGXNog_htJf0SoGfQJ-tuPRJnbaZRi82Cx-1i5-KUoeOw"/>
+</div>
+<div class="masonry-item-tall rounded-xl overflow-hidden">
+<img alt="Cafe" class="w-full h-full object-cover" data-alt="Wide angle shot of the café" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR86u3pcj1rTcLtBxnAZqgbY_Q2OYPoxmpnlG4fejNBsWgWDnW_K0ObYDipEV2PM3cy6ZO0Vhj7GP9h4oNKMLmu1Gaelw56GioboiKPocuxmu_fqbl3RW61I_djl61VQZpZwCVTp21CfRrID5wFwdAyyYaNn59r5cJB9GFhs5GflE7SYWtSv6LzTb8IeAvZL2OOew41KFn1SWHPrd1gd7unHFyQotA9_oe6w-oFSEy_QX0wrCcZ2VMMEauwTLRMA8CZbPHMYMK6KI"/>
+</div>
+<div class="rounded-xl overflow-hidden">
+<img alt="Barista" class="w-full h-full object-cover" data-alt="Barista steaming milk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAak5x7brW1uViDY4IZaAtPD2x0CfABaIRthCuo3IP7L3rq4j5mEsxHfvfk4vXsnNdDZqfETvlmlU1Vv1D1GtlfvkV8dIty6qeJ3b6-ha8ouKFcjcnrIMFHNtt6ni_bUIm6dgpzu4qBg63xW2-y24Fhjw6a2Xu0n8t_wy4DxnbtF0eknWWSoRk-z1RBOSzKvzWrDYAWLrgY5QhOj7spiUMdayJEA_w8ppNpW9JJ0alGdy8z6C8FknaAGAXl7V78R8DDlHzZCDSmVUw"/>
+</div>
+<div class="rounded-xl overflow-hidden">
+<img alt="Coffee Table" class="w-full h-full object-cover" data-alt="Top down view of coffee and pastries" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxBQPavUX1VEOKt6wgI7hqJOAEKsBoXkGV8el_-XRzg4J4M0xYN2ho2is1Rqz80h1p_5hfhIMzcY0GIh6iqglc623USldGdYaLDOcuiz0tLwgwbtbmNMpF-cpSRKd_AswDcQ6J7cn2UYcukrEgb0GtLpoNumHGdy0PxOF4rHsPzkM__pgfbyvXjFbZbidgMLY8WBDYxzrZkqrXvTMTICDCjn39halltqwYVrk72jRdJU8xiyG7QBBFPy8aFoNbEN5Y_qPX0Wl4Xlw"/>
+</div>
+<div class="rounded-xl overflow-hidden">
+<img alt="Coffee beans" class="w-full h-full object-cover" data-alt="Fresh roasted dark coffee beans" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAczZxi_wS9QvxsmMmUNiHWCls4XJyHrH6QacYKivgNh7_UGAizvd55RDnhRtdpZjPDcXvHvtqVuGoUiSvNuyyYqNLKwgQfde_hyZ2AgRlvSxRP-vJSH3Ws-GBX_e7ewpoBP86dai8GDjhrTQJVgDPEls9K0l90wCl_qlQKoDDw27AGD1-xo7N-nqTJJza66oWld_U_LHhhf9-4Z_Lfe0-W8DDGU_1PhlzTiMcE451vwsqsm209Uf0I7qDBnUJL_IPvUdpsrVj-_qs"/>
+</div>
+</div>
+<!-- Testimonials -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-background-dark p-8 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex text-accent-gold mb-4">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300 italic mb-6 leading-relaxed">
+                        "The best latte I've ever had. The atmosphere is so peaceful, it's my favorite spot to write."
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-latte-beige overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="Customer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMi5NyQODI2zh3ewCX72ewP7hzFwVIrNSrEN4LDFV5e4A-mWt4brJRzazPuVO7OkJ8q6XBZOhsJPYACmuxeG922V4PLATQw5X07EHYTBVYAZXGSkDPQnOVvt4pSMOI7mKZsSrD6sZ9nlPNJup35pXcy-4W5a8ZIGskw7yBxyx3tkKcznlbrAzCdkSzbZEnEC7IayP9mrjhvJsINDyB4BFZdmEViK0u9_XB-NvOAmVtUkUUJzqB5gs8nbB_vEn693Fgdjzi3917yqI"/>
+</div>
+<div>
+<p class="font-bold text-espresso-black dark:text-slate-100">Sarah Jenkins</p>
+<p class="text-xs text-slate-400 uppercase tracking-widest font-bold">Local Foodie</p>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-8 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex text-accent-gold mb-4">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300 italic mb-6 leading-relaxed">
+                        "Incredible beans. I buy their whole roast for my home brewing every week. Truly artisanal quality."
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-latte-beige overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="Customer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIPe3SxcDJtI5njFPYHvcFVicsO45_7fTSekWLsB7MOrAWPKPA6i_oWpSmag2JKQq3XkfLBxp9qiubxZBazztGd29wCTQRrSufgE10H--tG1guHGY01irFVlCDI-lNxwsOPOEI_Hf-EjDaO_3W3FLaAXmN8VFsnu2KI7yctouc_WAT75pI2ZuW4-qKOH91yr0tQWwyaQRBf_CepK8QMgHMciGZUrTzkKYTuNISRnUxkN2lR_Flt3y3pSiw8_7zneR2vz9FCVOUehM"/>
+</div>
+<div>
+<p class="font-bold text-espresso-black dark:text-slate-100">Marcus Chen</p>
+<p class="text-xs text-slate-400 uppercase tracking-widest font-bold">Coffee Connoisseur</p>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-8 rounded-xl border border-primary/5 shadow-sm">
+<div class="flex text-accent-gold mb-4">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="material-symbols-outlined fill-1">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300 italic mb-6 leading-relaxed">
+                        "The staff is so knowledgeable. They guided me through a pour-over tasting that blew my mind."
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-latte-beige overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="Customer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU_qhoS4fHrPXAEQKZhgOySzTyE6pY4JxaDUI6TADM2A1HC23z-r5hXRdHwv5xmkSoI_KiYPK4JBPXLzeC1QkZMJOMyg78FUtBgTqqXy7pyJpLWs5R18DT9gTFdr89PNr2LgozGVlooFfm-378GYFOnLqqbe3VyOtRqM3rf2gjNMLGkLUuceIlDoIbCAJxqyYabTg_uRwKBUicvL_ud5CQD8expusms_Vb_T4mrRCf13KrgD86e3M-89a_fvNDm-a6UnrifOSzvik"/>
+</div>
+<div>
+<p class="font-bold text-espresso-black dark:text-slate-100">Elena Rodriguez</p>
+<p class="text-xs text-slate-400 uppercase tracking-widest font-bold">Tech Designer</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-espresso-black text-white pt-24 pb-12">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-latte-beige text-3xl">coffee</span>
+<h2 class="text-2xl font-black tracking-tighter uppercase">Artisan</h2>
+</div>
+<p class="text-slate-400 leading-relaxed">
+                        Elevating your daily coffee ritual with premium beans and soulful brewing. Visit us in the heart of the city.
+                    </p>
+<div class="flex gap-4">
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">chat</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Shop Coffee</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Gift Cards</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Roasting Process</a></li>
+<li><a class="text-slate-400 hover:text-white transition-colors" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Location</h4>
+<div class="space-y-4 text-slate-400">
+<p>123 Roast Avenue,<br/>Bean District, NY 10001</p>
+<p class="pt-4">Mon - Fri: 7am - 8pm</p>
+<p>Sat - Sun: 8am - 9pm</p>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Join the Club</h4>
+<p class="text-sm text-slate-400 mb-6">Receive brewing tips and early access to new seasonal roasts.</p>
+<form class="space-y-4">
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Your email address" type="email"/>
+</div>
+<button class="w-full bg-primary py-3 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-primary/80 transition-all">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 text-center text-slate-500 text-sm">
+<p>© 2024 Artisan Coffee Co. All rights reserved. Crafted with caffeine.</p>
+</div>
+</div>
+</footer>
+</body></html>
