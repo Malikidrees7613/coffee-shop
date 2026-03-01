@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Your Cart | Artisan Coffee</title>
+  <meta name="description" content="Review and manage your Artisan Coffee cart. Adjust quantities, apply promo codes, and proceed to checkout seamlessly."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary":          "#4a2e2b",
+            "accent-gold":      "#C8A951",
+            "latte-beige":      "#D7B49E",
+            "soft-cream":       "#F5EBDD",
+            "espresso-black":   "#2E1F1B",
+            "background-light": "#f7f7f6",
+            "background-dark":  "#1c1716",
+          },
+          fontFamily: { "display": ["Work Sans", "sans-serif"] },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Work Sans', sans-serif; }
+
+    /* Smooth page entrance */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.5s ease both; }
+    .fade-up-1 { animation-delay: 0.05s; }
+    .fade-up-2 { animation-delay: 0.12s; }
+    .fade-up-3 { animation-delay: 0.20s; }
+    .fade-up-4 { animation-delay: 0.28s; }
+
+    /* Cart item slide-out */
+    .cart-item { transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.4s ease, margin 0.3s ease, padding 0.3s ease; }
+    .cart-item.removing { opacity: 0; transform: translateX(40px); max-height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden; }
+
+    /* Quantity button pulse */
+    .qty-btn:active { transform: scale(0.88); }
+
+    /* Sticky order summary on desktop */
+    @media (min-width: 1024px) {
+      .order-summary-sticky { position: sticky; top: 6rem; }
+    }
+
+    /* Promo input focus glow */
+    .promo-input:focus { box-shadow: 0 0 0 3px rgba(200,169,81,0.25); }
+
+    /* Progress stepper */
+    .step-active   { color: #4a2e2b; font-weight: 700; }
+    .step-inactive { color: #a8a29e; }
+    .step-done     { color: #C8A951; font-weight: 600; }
+
+    /* Recommendation card hover */
+    .rec-card { transition: box-shadow 0.25s, transform 0.25s; }
+    .rec-card:hover { box-shadow: 0 12px 32px -8px rgba(74,46,43,0.18); transform: translateY(-4px); }
+
+    /* Dark mode cart item bg */
+    .dark .cart-row { background-color: rgba(255,255,255,0.04); }
+
+    /* Toast notification */
+    #toast {
+      transition: opacity 0.3s, transform 0.3s;
+      opacity: 0; transform: translateY(12px);
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+
+<!-- ============================================================
+     STICKY NAVBAR
+============================================================ -->
+<header class="sticky top-0 z-50 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-primary/10">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3 group">
+      <div class="text-primary dark:text-latte-beige group-hover:rotate-12 transition-transform duration-300">
+        <span class="material-symbols-outlined text-4xl">coffee</span>
+      </div>
+      <span class="text-2xl font-black tracking-tighter text-primary dark:text-slate-100 uppercase">Artisan</span>
+    </a>
+
+    <!-- Nav Links -->
+    <nav class="hidden md:flex items-center gap-10">
+      <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="index.html">Home</a>
+      <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="Menu.html">Menu</a>
+      <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="our-story.html">About</a>
+      <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="roasting-process.html">Roasting</a>
+      <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="locations.html">Location</a>
+    </nav>
+
+    <!-- Right actions -->
+    <div class="flex items-center gap-6">
+      <!-- Cart icon (active) -->
+      <a href="cart.html" class="relative cursor-pointer group" aria-label="View Cart">
+        <span class="material-symbols-outlined text-2xl text-primary transition-colors">shopping_cart</span>
+        <span id="nav-cart-badge" class="absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-background-light">3</span>
+      </a>
+      <!-- Dark mode toggle -->
+      <button id="dark-toggle" aria-label="Toggle dark mode" class="h-9 w-9 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary/5 transition-colors">
+        <span class="material-symbols-outlined text-xl" id="dark-icon">dark_mode</span>
+      </button>
+      <button class="hidden lg:block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all uppercase tracking-wider">Join the Club</button>
+    </div>
+
+  </div>
+</header>
+
+<!-- ============================================================
+     MAIN CONTENT
+============================================================ -->
+<main class="max-w-7xl mx-auto px-6 py-10 min-h-[70vh]">
+
+  <!-- ── Breadcrumb & Title ── -->
+  <div class="mb-8 fade-up">
+    <nav class="flex items-center gap-2 text-xs text-slate-400 uppercase tracking-widest mb-4">
+      <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+      <span class="material-symbols-outlined text-sm">chevron_right</span>
+      <a href="Menu.html" class="hover:text-primary transition-colors">Menu</a>
+      <span class="material-symbols-outlined text-sm">chevron_right</span>
+      <span class="text-primary font-semibold">Cart</span>
+    </nav>
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight text-espresso-black dark:text-slate-100">Your <span class="text-accent-gold italic">Cart</span></h1>
+  </div>
+
+  <!-- ── Checkout Progress Stepper ── -->
+  <div class="mb-10 fade-up fade-up-1">
+    <div class="flex items-center justify-center gap-6 md:gap-14">
+      <!-- Step 1: Cart (active) -->
+      <div class="flex flex-col items-center gap-1.5 step-active">
+        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20">
+          <span class="material-symbols-outlined text-lg">shopping_cart</span>
+        </div>
+        <span class="text-xs uppercase tracking-widest">Cart</span>
+      </div>
+      <div class="h-px flex-1 max-w-[80px] bg-primary/20"></div>
+      <!-- Step 2: Details -->
+      <div class="flex flex-col items-center gap-1.5 step-inactive">
+        <div class="w-10 h-10 rounded-full border-2 border-primary/20 flex items-center justify-center">
+          <span class="material-symbols-outlined text-lg text-slate-400">person_pin_circle</span>
+        </div>
+        <span class="text-xs uppercase tracking-widest">Details</span>
+      </div>
+      <div class="h-px flex-1 max-w-[80px] bg-primary/20"></div>
+      <!-- Step 3: Payment -->
+      <div class="flex flex-col items-center gap-1.5 step-inactive">
+        <div class="w-10 h-10 rounded-full border-2 border-primary/20 flex items-center justify-center">
+          <span class="material-symbols-outlined text-lg text-slate-400">payments</span>
+        </div>
+        <span class="text-xs uppercase tracking-widest">Payment</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main Grid: Cart Items + Order Summary ── -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+    <!-- LEFT: Cart Items -->
+    <div class="lg:col-span-7 space-y-4">
+
+      <!-- Column headers -->
+      <div class="hidden md:grid grid-cols-12 gap-4 text-xs font-bold uppercase tracking-widest text-slate-400 pb-2 border-b border-primary/10 fade-up fade-up-2">
+        <div class="col-span-6">Product</div>
+        <div class="col-span-2 text-center">Price</div>
+        <div class="col-span-2 text-center">Qty</div>
+        <div class="col-span-2 text-right">Total</div>
+      </div>
+
+      <!-- Cart Items List -->
+      <div id="cart-list" class="space-y-4">
+
+        <!-- ── Item 1: Ethiopian Yirgacheffe ── -->
+        <div class="cart-item cart-row rounded-xl p-5 bg-white dark:bg-white/4 border border-primary/8 shadow-sm fade-up fade-up-2" data-id="1" data-price="18.00">
+          <div class="grid grid-cols-12 gap-4 items-center">
+            <!-- Image + Info -->
+            <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+              <div class="relative shrink-0">
+                <div class="w-20 h-20 rounded-xl overflow-hidden border border-primary/10">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuADALQujqpDNpeAjWfacTAARMPjD99GK6oVo9k_GZFqlHcGUkLFFWPoo2CVQATj8VfJD9R7wj2ExrZixyys4lTBDsHKdNMipcXZCxd4TqTR6q4To0Uy5yfRh5c-oibjPZbd_E2I1eHK_AsWyBjT28bueBkLQB2GuElvnAkIhhZqDg6FL_wkOZLNeAqAAqtS5lST2jmsNAGPkUNxhYGUF-0OdV7abLgCuujbhRqMWfz0LmqOlcFWPCWnMuG3Z_Dejwu-McyWeNMVdh4"
+                       alt="Ethiopian Yirgacheffe" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"/>
+                </div>
+                <span class="absolute -top-1.5 -right-1.5 bg-accent-gold text-espresso-black text-[9px] font-black px-1.5 py-0.5 rounded uppercase tracking-wide">Popular</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-espresso-black dark:text-slate-100 text-base leading-tight">Ethiopian Yirgacheffe</h3>
+                <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Whole Bean · 250g</p>
+                <p class="text-xs text-slate-400 mt-1">Floral notes of jasmine &amp; bergamot</p>
+                <button onclick="removeItem(this)" class="flex items-center gap-1 text-xs text-slate-400 hover:text-red-500 transition-colors mt-2 group/del">
+                  <span class="material-symbols-outlined text-sm group-hover/del:rotate-12 transition-transform">delete_outline</span>
+                  Remove
+                </button>
+              </div>
+            </div>
+            <!-- Price -->
+            <div class="col-span-4 md:col-span-2 text-center">
+              <span class="text-sm font-bold text-primary">$18.00</span>
+            </div>
+            <!-- Qty -->
+            <div class="col-span-4 md:col-span-2 flex items-center justify-center">
+              <div class="flex items-center gap-1 border border-primary/20 rounded-lg overflow-hidden">
+                <button onclick="changeQty(this, -1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">−</button>
+                <span class="qty-val w-8 text-center text-sm font-bold select-none">2</span>
+                <button onclick="changeQty(this, 1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">+</button>
+              </div>
+            </div>
+            <!-- Line total -->
+            <div class="col-span-4 md:col-span-2 text-right">
+              <span class="item-total text-sm font-bold text-espresso-black dark:text-slate-100">$36.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Item 2: Ceramic Artisan Mug ── -->
+        <div class="cart-item cart-row rounded-xl p-5 bg-white dark:bg-white/4 border border-primary/8 shadow-sm fade-up fade-up-3" data-id="2" data-price="24.00">
+          <div class="grid grid-cols-12 gap-4 items-center">
+            <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+              <div class="relative shrink-0">
+                <div class="w-20 h-20 rounded-xl overflow-hidden border border-primary/10">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTo1HF97IRfBNWebq5wd8fF4rxk0nokuJ8IJSuJkg48nlizHBWkMQHaiv72M6i8dVc_joCZ5-2mdpF2qWq_NurM0XK5lEotEnN5FrknhM7XdMc4vSNRq9uc_jb3T6TuoeU_I1DeFzQqW5ixc5btUnlbNBJ_GtpxKeGq9G0qnYV6LQ8PdsgdzzLWh9opxzCakUmwk2SHpNkE8x6aT01E0qTImVC6n9hiOmnJTH2Z6HEcUUCECHrZtT--BADvpO8viUjJcAtQOMOfjY"
+                       alt="Ceramic Artisan Mug" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"/>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-bold text-espresso-black dark:text-slate-100 text-base leading-tight">Ceramic Artisan Mug</h3>
+                <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Sandstone Matte · 12oz</p>
+                <p class="text-xs text-slate-400 mt-1">Hand-thrown, microwave safe</p>
+                <button onclick="removeItem(this)" class="flex items-center gap-1 text-xs text-slate-400 hover:text-red-500 transition-colors mt-2 group/del">
+                  <span class="material-symbols-outlined text-sm group-hover/del:rotate-12 transition-transform">delete_outline</span>
+                  Remove
+                </button>
+              </div>
+            </div>
+            <div class="col-span-4 md:col-span-2 text-center">
+              <span class="text-sm font-bold text-primary">$24.00</span>
+            </div>
+            <div class="col-span-4 md:col-span-2 flex items-center justify-center">
+              <div class="flex items-center gap-1 border border-primary/20 rounded-lg overflow-hidden">
+                <button onclick="changeQty(this, -1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">−</button>
+                <span class="qty-val w-8 text-center text-sm font-bold select-none">1</span>
+                <button onclick="changeQty(this, 1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">+</button>
+              </div>
+            </div>
+            <div class="col-span-4 md:col-span-2 text-right">
+              <span class="item-total text-sm font-bold text-espresso-black dark:text-slate-100">$24.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Item 3: Velvet Latte Blend ── -->
+        <div class="cart-item cart-row rounded-xl p-5 bg-white dark:bg-white/4 border border-primary/8 shadow-sm fade-up fade-up-4" data-id="3" data-price="14.00">
+          <div class="grid grid-cols-12 gap-4 items-center">
+            <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+              <div class="relative shrink-0">
+                <div class="w-20 h-20 rounded-xl overflow-hidden border border-primary/10">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxcsOf9lyOZmlz5KUeM_kFyK_y7k5vL0IXYmpQ0WYTydNKewIxY7hA2B6TX5BCVObeZ5wWdLY6eENHjo8Yo-HT-ksKvPMbQM9COqMiTZSSPoh3he2sKUnbdU3dFYxEfaniB0UBgHaSk77aS9ZmRzrtwqF9AqdryzQ_5fAAQDKYiDmjfSXKE2hughEmQzHF9N9tq_goGOE6ub2PIGA4z1fc3jLR-8ELjhvUIqe8LAareruFZ8ejkBGw4LX55gPey-FCk8NIUW5Q4co"
+                       alt="Velvet Latte Blend" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"/>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-bold text-espresso-black dark:text-slate-100 text-base leading-tight">Velvet Latte Blend</h3>
+                <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Ground · 200g</p>
+                <p class="text-xs text-slate-400 mt-1">Silky smooth, caramel finish</p>
+                <button onclick="removeItem(this)" class="flex items-center gap-1 text-xs text-slate-400 hover:text-red-500 transition-colors mt-2 group/del">
+                  <span class="material-symbols-outlined text-sm group-hover/del:rotate-12 transition-transform">delete_outline</span>
+                  Remove
+                </button>
+              </div>
+            </div>
+            <div class="col-span-4 md:col-span-2 text-center">
+              <span class="text-sm font-bold text-primary">$14.00</span>
+            </div>
+            <div class="col-span-4 md:col-span-2 flex items-center justify-center">
+              <div class="flex items-center gap-1 border border-primary/20 rounded-lg overflow-hidden">
+                <button onclick="changeQty(this, -1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">−</button>
+                <span class="qty-val w-8 text-center text-sm font-bold select-none">1</span>
+                <button onclick="changeQty(this, 1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">+</button>
+              </div>
+            </div>
+            <div class="col-span-4 md:col-span-2 text-right">
+              <span class="item-total text-sm font-bold text-espresso-black dark:text-slate-100">$14.00</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /#cart-list -->
+
+      <!-- Empty State (hidden initially) -->
+      <div id="empty-state" class="hidden text-center py-20">
+        <div class="w-24 h-24 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-6">
+          <span class="material-symbols-outlined text-5xl text-primary/30">shopping_cart</span>
+        </div>
+        <h3 class="text-2xl font-black text-espresso-black dark:text-slate-100 mb-2">Your cart is empty</h3>
+        <p class="text-slate-400 mb-8">Looks like you haven't added anything yet.</p>
+        <a href="Menu.html" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 rounded-xl font-bold hover:bg-primary/90 transition-all uppercase tracking-wider">
+          <span class="material-symbols-outlined text-lg">restaurant_menu</span>
+          Browse Menu
+        </a>
+      </div>
+
+      <!-- ── Promo Code ── -->
+      <div class="pt-4 fade-up fade-up-4">
+        <div class="flex gap-3">
+          <div class="relative flex-1">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">confirmation_number</span>
+            <input id="promo-input" type="text" placeholder="Promo or gift code"
+                   class="promo-input w-full pl-10 pr-4 py-3 rounded-xl border border-primary/20 bg-white dark:bg-white/5 dark:text-slate-100 focus:outline-none focus:border-accent-gold text-sm transition-all"/>
+          </div>
+          <button onclick="applyPromo()" class="bg-primary/10 hover:bg-primary hover:text-white text-primary border border-primary/20 px-5 py-3 rounded-xl text-sm font-bold transition-all uppercase tracking-wider">Apply</button>
+        </div>
+        <p id="promo-msg" class="text-xs mt-2 hidden"></p>
+      </div>
+
+      <!-- ── Continue Shopping ── -->
+      <div class="pt-2">
+        <a href="Menu.html" class="inline-flex items-center gap-2 text-sm text-primary font-semibold hover:-translate-x-1 transition-transform">
+          <span class="material-symbols-outlined text-lg">arrow_back</span>
+          Continue Shopping
+        </a>
+      </div>
+
+    </div><!-- /LEFT -->
+
+    <!-- RIGHT: Order Summary -->
+    <div class="lg:col-span-5 order-summary-sticky">
+      <div class="bg-white dark:bg-white/4 border border-primary/10 rounded-2xl overflow-hidden shadow-md fade-up fade-up-2">
+
+        <!-- Summary header -->
+        <div class="bg-primary px-6 py-5 flex items-center gap-3">
+          <span class="material-symbols-outlined text-latte-beige text-2xl">receipt_long</span>
+          <h2 class="text-white font-black text-xl uppercase tracking-wider">Order Summary</h2>
+        </div>
+
+        <div class="p-6 space-y-5">
+
+          <!-- Line items breakdown -->
+          <div class="space-y-3" id="summary-items">
+            <div class="flex justify-between text-sm">
+              <span class="text-slate-500">Ethiopian Yirgacheffe ×2</span>
+              <span class="font-semibold">$36.00</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-slate-500">Ceramic Artisan Mug ×1</span>
+              <span class="font-semibold">$24.00</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-slate-500">Velvet Latte Blend ×1</span>
+              <span class="font-semibold">$14.00</span>
+            </div>
+          </div>
+
+          <div class="h-px bg-primary/10"></div>
+
+          <!-- Totals -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm text-slate-600 dark:text-slate-300">
+              <span>Subtotal (<span id="item-count">4</span> items)</span>
+              <span id="subtotal">$74.00</span>
+            </div>
+            <div class="flex justify-between text-sm text-slate-600 dark:text-slate-300">
+              <span>Shipping</span>
+              <span class="text-green-500 font-semibold">Free</span>
+            </div>
+            <div id="discount-row" class="hidden flex justify-between text-sm">
+              <span class="text-green-600">Promo Discount</span>
+              <span id="discount-amount" class="text-green-600 font-semibold">−$0.00</span>
+            </div>
+            <div class="flex justify-between text-sm text-slate-600 dark:text-slate-300">
+              <span>Estimated Tax (8%)</span>
+              <span id="tax">$5.92</span>
+            </div>
+          </div>
+
+          <div class="h-px bg-primary/10"></div>
+
+          <!-- Grand total -->
+          <div class="flex justify-between items-baseline">
+            <span class="text-lg font-black uppercase tracking-wider text-espresso-black dark:text-slate-100">Total</span>
+            <div class="text-right">
+              <span id="grand-total" class="text-3xl font-black text-primary">$79.92</span>
+              <p class="text-xs text-slate-400 mt-0.5">USD, incl. taxes</p>
+            </div>
+          </div>
+
+          <!-- Checkout CTA -->
+          <a href="checkOut.html"
+             class="group w-full bg-primary text-white py-4 rounded-xl font-bold text-base hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 uppercase tracking-wider">
+            Proceed to Checkout
+            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </a>
+
+          <!-- Trust badges -->
+          <div class="grid grid-cols-3 gap-2 pt-1">
+            <div class="flex flex-col items-center gap-1 text-center">
+              <span class="material-symbols-outlined text-accent-gold text-xl">lock</span>
+              <span class="text-[10px] text-slate-400 uppercase tracking-wide leading-tight">Secure<br>Payment</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 text-center">
+              <span class="material-symbols-outlined text-accent-gold text-xl">local_shipping</span>
+              <span class="text-[10px] text-slate-400 uppercase tracking-wide leading-tight">Free<br>Shipping</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 text-center">
+              <span class="material-symbols-outlined text-accent-gold text-xl">autorenew</span>
+              <span class="text-[10px] text-slate-400 uppercase tracking-wide leading-tight">Easy<br>Returns</span>
+            </div>
+          </div>
+
+          <!-- Brand quote -->
+          <div class="bg-soft-cream dark:bg-primary/10 border border-accent-gold/20 rounded-xl p-4 mt-2">
+            <p class="text-xs text-primary/80 dark:text-latte-beige italic leading-relaxed">
+              "Grown with care, roasted with passion, delivered to your doorstep."
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /RIGHT -->
+
+  </div><!-- /Grid -->
+
+  <!-- ── You May Also Like ── -->
+  <section class="mt-20 fade-up">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <p class="text-primary text-xs font-black tracking-[0.3em] uppercase mb-1">Pairings</p>
+        <h2 class="text-3xl font-black text-espresso-black dark:text-slate-100 tracking-tight">You May Also Love</h2>
+      </div>
+      <a href="Menu.html" class="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:translate-x-1 transition-transform">
+        View all <span class="material-symbols-outlined text-base">trending_flat</span>
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Rec 1 -->
+      <div class="rec-card group bg-white dark:bg-white/4 rounded-xl overflow-hidden border border-primary/8 shadow-sm">
+        <div class="aspect-square overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCJqUL2_oBwfTdX4bd2kjlp3vswBNiWER8b2KL599oZP8aZfJZXWV0Xr2W7PGuafaqSmunsqW9mhbjY93samnK6lFF-FkHWoftyMpoOgAMOAIo-PsK56Ni9uYl4Plis4ZWW6kIAx0Sq8tDl_BDq_TQxhxsIOrK5pEhtvSUlUJW6xNnZ2PCHDedPxkvkTC_iP2vLiH_FGOm4qlGIvWTrMidLtz2-wP2FGgtZs4BfcbMhNBy28JmImYgRAOkgF4bN_k3oZRo_JEe5LQ"
+               alt="Signature Espresso" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-espresso-black dark:text-slate-100 text-sm mb-1">Signature Espresso</h4>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-sm">$4.50</span>
+            <button onclick="showToast('Signature Espresso added!')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
+              <span class="material-symbols-outlined text-sm">add</span> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rec 2 -->
+      <div class="rec-card group bg-white dark:bg-white/4 rounded-xl overflow-hidden border border-primary/8 shadow-sm">
+        <div class="aspect-square overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWRLCCLi8O7YlNjjTnuR59eLphE8Kk6drx1D5yif9ThVpCYpUx1octVlWr4KrvqA8LhRFQMPM2TnE1WxQbNDGXeVZY6oP-I2upi3DLnO0gNYAFIY-1_CG9p62_KcKzAxuTfW_i6A01pqKpPVJkdNz-SYKqKe22euCfQ2jduzmnAGLOsfHMKJbp3oz9UECyYIxCqzUTyfMx0i9MMIFkg7GVyBGPzd8oJe6J24hlGRV5VnOZOsuD7VVfpX4k20TxzkL6CFJxb1yDuNo"
+               alt="Artisan Cold Brew" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-espresso-black dark:text-slate-100 text-sm mb-1">Artisan Cold Brew</h4>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-sm">$5.00</span>
+            <button onclick="showToast('Artisan Cold Brew added!')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
+              <span class="material-symbols-outlined text-sm">add</span> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rec 3 -->
+      <div class="rec-card group bg-white dark:bg-white/4 rounded-xl overflow-hidden border border-primary/8 shadow-sm">
+        <div class="aspect-square overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaPX5-HSCd6UdGv-G2lEUWlL5n3TjVCKaFi9a5iDsz2GD8teVdTS3ywW5yopg3o85XH2i5gVEzP6N6Ad_sMpqc5PXKKTs7MRT0Y8Ur2atzkh1iunLMQ8iMbsapjS0vq0YHcD6R-kKh97-JB97h_IDZKuGQpvx63ud-xCNofMAYYMsI3nKmTe-xFHuSAsfxtpu71jEhW5veD8kYDCUnvXRhX_Y-dc9jIFkeSCvcIKL70zgx-6MjB1YbjrPT1qOmGiwUDkRqpVJyqSc"
+               alt="Golden Mocha" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-espresso-black dark:text-slate-100 text-sm mb-1">Golden Mocha</h4>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-sm">$6.00</span>
+            <button onclick="showToast('Golden Mocha added!')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
+              <span class="material-symbols-outlined text-sm">add</span> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rec 4 -->
+      <div class="rec-card group bg-white dark:bg-white/4 rounded-xl overflow-hidden border border-primary/8 shadow-sm">
+        <div class="aspect-square overflow-hidden">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAczZxi_wS9QvxsmMmUNiHWCls4XJyHrH6QacYKivgNh7_UGAizvd55RDnhRtdpZjPDcXvHvtqVuGoUiSvNuyyYqNLKwgQfde_hyZ2AgRlvSxRP-vJSH3Ws-GBX_e7ewpoBP86dai8GDjhrTQJVgDPEls9K0l90wCl_qlQKoDDw27AGD1-xo7N-nqTJJza66oWld_U_LHhhf9-4Z_Lfe0-W8DDGU_1PhlzTiMcE451vwsqsm209Uf0I7qDBnUJL_IPvUdpsrVj-_qs"
+               alt="Single Origin Roast" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-espresso-black dark:text-slate-100 text-sm mb-1">Colombian Single Origin</h4>
+          <div class="flex justify-between items-center">
+            <span class="text-primary font-bold text-sm">$16.00</span>
+            <button onclick="showToast('Colombian Single Origin added!')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
+              <span class="material-symbols-outlined text-sm">add</span> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Toast notification ── -->
+<div id="toast" class="fixed bottom-6 right-6 z-[100] flex items-center gap-3 bg-espresso-black text-white px-5 py-3.5 rounded-xl shadow-2xl pointer-events-none">
+  <span class="material-symbols-outlined text-accent-gold text-xl">check_circle</span>
+  <span id="toast-msg" class="text-sm font-semibold"></span>
+</div>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="bg-espresso-black text-white pt-24 pb-12 mt-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-latte-beige text-3xl">coffee</span>
+          <h2 class="text-2xl font-black tracking-tighter uppercase">Artisan</h2>
+        </div>
+        <p class="text-slate-400 leading-relaxed">Elevating your daily coffee ritual with premium beans and soulful brewing. Visit us in the heart of the city.</p>
+        <div class="flex gap-4">
+          <a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-sm">public</span>
+          </a>
+          <a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-sm">share</span>
+          </a>
+          <a class="h-10 w-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+            <span class="material-symbols-outlined text-sm">chat</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Quick Links</h4>
+        <ul class="space-y-4">
+          <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Shop Coffee</a></li>
+          <li><a class="text-slate-400 hover:text-white transition-colors" href="#">Gift Cards</a></li>
+          <li><a class="text-slate-400 hover:text-white transition-colors" href="roasting-process.html">Roasting Process</a></li>
+          <li><a class="text-slate-400 hover:text-white transition-colors" href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Location</h4>
+        <div class="space-y-4 text-slate-400">
+          <p>123 Roast Avenue,<br/>Bean District, NY 10001</p>
+          <p class="pt-4">Mon - Fri: 7am - 8pm</p>
+          <p>Sat - Sun: 8am - 9pm</p>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold mb-8 uppercase tracking-widest text-latte-beige">Join the Club</h4>
+        <p class="text-sm text-slate-400 mb-6">Receive brewing tips and early access to new seasonal roasts.</p>
+        <form class="space-y-4" onsubmit="return false;">
+          <input class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary transition-colors" placeholder="Your email address" type="email"/>
+          <button class="w-full bg-primary py-3 rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-primary/80 transition-all">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="pt-12 border-t border-white/5 text-center text-slate-500 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>© 2024 Artisan Coffee Co. All rights reserved. Crafted with caffeine.</p>
+      <div class="flex gap-6 justify-center">
+        <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+        <a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  // ── Dark Mode Toggle ──────────────────────────────────────────
+  const darkToggle = document.getElementById('dark-toggle');
+  const darkIcon   = document.getElementById('dark-icon');
+  const html       = document.documentElement;
+
+  // Respect saved preference
+  if (localStorage.getItem('theme') === 'dark') {
+    html.classList.add('dark');
+    darkIcon.textContent = 'light_mode';
+  }
+
+  darkToggle.addEventListener('click', () => {
+    html.classList.toggle('dark');
+    const isDark = html.classList.contains('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    darkIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+  });
+
+  // ── Cart State ────────────────────────────────────────────────
+  function recalcTotals() {
+    let subtotal = 0;
+    let count    = 0;
+
+    document.querySelectorAll('#cart-list .cart-item:not(.removing)').forEach(item => {
+      const price = parseFloat(item.dataset.price);
+      const qty   = parseInt(item.querySelector('.qty-val').textContent);
+      const line  = price * qty;
+      item.querySelector('.item-total').textContent = '$' + line.toFixed(2);
+      subtotal += line;
+      count    += qty;
+    });
+
+    // Apply promo discount
+    const discRow = document.getElementById('discount-row');
+    let discount = 0;
+    if (!discRow.classList.contains('hidden')) {
+      discount = subtotal * 0.10;
+      document.getElementById('discount-amount').textContent = '−$' + discount.toFixed(2);
+    }
+
+    const tax   = (subtotal - discount) * 0.08;
+    const total = (subtotal - discount) + tax;
+
+    document.getElementById('subtotal').textContent    = '$' + subtotal.toFixed(2);
+    document.getElementById('tax').textContent         = '$' + tax.toFixed(2);
+    document.getElementById('grand-total').textContent = '$' + total.toFixed(2);
+    document.getElementById('item-count').textContent  = count;
+    document.getElementById('nav-cart-badge').textContent = count;
+
+    // Empty state
+    const visible = document.querySelectorAll('#cart-list .cart-item:not(.removing)');
+    document.getElementById('empty-state').classList.toggle('hidden', visible.length > 0);
+  }
+
+  // ── Change Quantity ───────────────────────────────────────────
+  function changeQty(btn, delta) {
+    const item    = btn.closest('.cart-item');
+    const valEl   = item.querySelector('.qty-val');
+    let qty = parseInt(valEl.textContent) + delta;
+    if (qty < 1) { removeItem(btn); return; }
+    valEl.textContent = qty;
+    recalcTotals();
+  }
+
+  // ── Remove Item ───────────────────────────────────────────────
+  function removeItem(btn) {
+    const item = btn.closest('.cart-item');
+    item.classList.add('removing');
+    setTimeout(() => {
+      item.remove();
+      recalcTotals();
+    }, 350);
+  }
+
+  // ── Promo Code ────────────────────────────────────────────────
+  function applyPromo() {
+    const code    = document.getElementById('promo-input').value.trim().toUpperCase();
+    const msg     = document.getElementById('promo-msg');
+    const discRow = document.getElementById('discount-row');
+
+    if (code === 'ARTISAN10' || code === 'BREW10') {
+      discRow.classList.remove('hidden');
+      msg.textContent = '✓ Promo applied! 10% discount activated.';
+      msg.className   = 'text-xs mt-2 text-green-500 font-semibold';
+    } else {
+      discRow.classList.add('hidden');
+      msg.textContent = '✗ Invalid code. Try ARTISAN10.';
+      msg.className   = 'text-xs mt-2 text-red-400';
+    }
+    msg.classList.remove('hidden');
+    recalcTotals();
+  }
+
+  // Promo on Enter
+  document.getElementById('promo-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') applyPromo();
+  });
+
+  // ── Toast Notification ────────────────────────────────────────
+  let toastTimer;
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-msg').textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  // ── Init ──────────────────────────────────────────────────────
+  recalcTotals();
+</script>
+
+</body>
+</html>

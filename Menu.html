@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en"><head>
+<html lang="en" class="scroll-smooth"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Artisan Coffee Full Menu</title>
@@ -51,7 +51,7 @@
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-primary transition-colors duration-300">
-<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-clip">
 <!-- Sticky Navbar -->
 <header class="sticky top-0 z-50 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-primary/10">
 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -121,7 +121,7 @@
 <!-- Product Grid -->
 <div class="flex-1 flex flex-col gap-16">
 <!-- Hero Section Category Header -->
-<section class="flex flex-col gap-8" id="signature">
+<section class="flex flex-col gap-8 scroll-mt-28" id="signature">
 <div class="flex flex-col gap-2">
 <h1 class="text-4xl font-bold tracking-tight text-primary dark:text-slate-100">Signature Brews</h1>
 <p class="text-primary/60 dark:text-slate-400 max-w-2xl leading-relaxed">
@@ -187,7 +187,7 @@
 </div>
 </section>
 <!-- Section: Espresso Bar -->
-<section class="flex flex-col gap-8" id="espresso">
+<section class="flex flex-col gap-8 scroll-mt-28" id="espresso">
 <div class="flex flex-col gap-2">
 <h2 class="text-3xl font-bold tracking-tight text-primary dark:text-slate-100">Espresso Bar</h2>
 <p class="text-primary/60 dark:text-slate-400 max-w-2xl leading-relaxed">
@@ -252,7 +252,7 @@
 </div>
 </section>
 <!-- Section: Pastries -->
-<section class="flex flex-col gap-8" id="pastries">
+<section class="flex flex-col gap-8 scroll-mt-28" id="pastries">
 <div class="flex flex-col gap-2">
 <h2 class="text-3xl font-bold tracking-tight text-primary dark:text-slate-100">Pastries</h2>
 <p class="text-primary/60 dark:text-slate-400 max-w-2xl leading-relaxed">
@@ -386,4 +386,43 @@
 </button>
 </div>
 </div>
+<!-- Scrollspy and Sticky Sidebar Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Remove active styles from all links
+                    document.querySelectorAll('aside ul li a').forEach(link => {
+                        link.classList.remove('active-category', 'text-primary', 'dark:text-slate-100', 'font-semibold');
+                        link.classList.add('text-primary/60', 'dark:text-slate-400', 'font-medium');
+                        const icon = link.querySelector('.material-symbols-outlined');
+                        if (icon) icon.classList.remove('text-accent-gold');
+                    });
+
+                    // Add active styles to the corresponding link
+                    const activeLink = document.querySelector(`aside ul li a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.remove('text-primary/60', 'dark:text-slate-400', 'font-medium');
+                        activeLink.classList.add('active-category', 'text-primary', 'dark:text-slate-100', 'font-semibold');
+                        const icon = activeLink.querySelector('.material-symbols-outlined');
+                        if (icon) icon.classList.add('text-accent-gold');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section[id]').forEach(section => {
+            observer.observe(section);
+        });
+    });
+</script>
 </body></html>
