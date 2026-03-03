@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="cart.js"></script>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -107,8 +108,8 @@
     <div class="flex items-center gap-6">
       <!-- Cart icon (active) -->
       <a href="cart.html" class="relative cursor-pointer group" aria-label="View Cart">
-        <span class="material-symbols-outlined text-2xl text-primary transition-colors">shopping_cart</span>
-        <span id="nav-cart-badge" class="absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-background-light">3</span>
+        <span class="material-symbols-outlined text-2xl text-primary transition-colors cart-icon-bounce" style="transition:transform 0.2s">shopping_cart</span>
+        <span class="cart-badge absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full items-center justify-center border-2 border-background-light" style="display:none">0</span>
       </a>
       <!-- Dark mode toggle -->
       <button id="dark-toggle" aria-label="Toggle dark mode" class="h-9 w-9 rounded-full border border-primary/20 flex items-center justify-center hover:bg-primary/5 transition-colors">
@@ -180,123 +181,9 @@
         <div class="col-span-2 text-right">Total</div>
       </div>
 
-      <!-- Cart Items List -->
-      <div id="cart-list" class="space-y-4">
+      <!-- Cart Items List – populated dynamically by renderCart() from localStorage -->
+      <div id="cart-list" class="space-y-4"></div><!-- /#cart-list -->
 
-        <!-- ── Item 1: Ethiopian Yirgacheffe ── -->
-        <div class="cart-item cart-row rounded-xl p-5 bg-white dark:bg-white/4 border border-primary/8 shadow-sm fade-up fade-up-2" data-id="1" data-price="18.00">
-          <div class="grid grid-cols-12 gap-4 items-center">
-            <!-- Image + Info -->
-            <div class="col-span-12 md:col-span-6 flex items-center gap-4">
-              <div class="relative shrink-0">
-                <div class="w-20 h-20 rounded-xl overflow-hidden border border-primary/10">
-                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuADALQujqpDNpeAjWfacTAARMPjD99GK6oVo9k_GZFqlHcGUkLFFWPoo2CVQATj8VfJD9R7wj2ExrZixyys4lTBDsHKdNMipcXZCxd4TqTR6q4To0Uy5yfRh5c-oibjPZbd_E2I1eHK_AsWyBjT28bueBkLQB2GuElvnAkIhhZqDg6FL_wkOZLNeAqAAqtS5lST2jmsNAGPkUNxhYGUF-0OdV7abLgCuujbhRqMWfz0LmqOlcFWPCWnMuG3Z_Dejwu-McyWeNMVdh4"
-                       alt="Ethiopian Yirgacheffe" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"/>
-                </div>
-                <span class="absolute -top-1.5 -right-1.5 bg-accent-gold text-espresso-black text-[9px] font-black px-1.5 py-0.5 rounded uppercase tracking-wide">Popular</span>
-              </div>
-              <div>
-                <h3 class="font-bold text-espresso-black dark:text-slate-100 text-base leading-tight">Ethiopian Yirgacheffe</h3>
-                <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Whole Bean · 250g</p>
-                <p class="text-xs text-slate-400 mt-1">Floral notes of jasmine &amp; bergamot</p>
-                <button onclick="removeItem(this)" class="flex items-center gap-1 text-xs text-slate-400 hover:text-red-500 transition-colors mt-2 group/del">
-                  <span class="material-symbols-outlined text-sm group-hover/del:rotate-12 transition-transform">delete_outline</span>
-                  Remove
-                </button>
-              </div>
-            </div>
-            <!-- Price -->
-            <div class="col-span-4 md:col-span-2 text-center">
-              <span class="text-sm font-bold text-primary">$18.00</span>
-            </div>
-            <!-- Qty -->
-            <div class="col-span-4 md:col-span-2 flex items-center justify-center">
-              <div class="flex items-center gap-1 border border-primary/20 rounded-lg overflow-hidden">
-                <button onclick="changeQty(this, -1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">−</button>
-                <span class="qty-val w-8 text-center text-sm font-bold select-none">2</span>
-                <button onclick="changeQty(this, 1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">+</button>
-              </div>
-            </div>
-            <!-- Line total -->
-            <div class="col-span-4 md:col-span-2 text-right">
-              <span class="item-total text-sm font-bold text-espresso-black dark:text-slate-100">$36.00</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── Item 2: Ceramic Artisan Mug ── -->
-        <div class="cart-item cart-row rounded-xl p-5 bg-white dark:bg-white/4 border border-primary/8 shadow-sm fade-up fade-up-3" data-id="2" data-price="24.00">
-          <div class="grid grid-cols-12 gap-4 items-center">
-            <div class="col-span-12 md:col-span-6 flex items-center gap-4">
-              <div class="relative shrink-0">
-                <div class="w-20 h-20 rounded-xl overflow-hidden border border-primary/10">
-                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTo1HF97IRfBNWebq5wd8fF4rxk0nokuJ8IJSuJkg48nlizHBWkMQHaiv72M6i8dVc_joCZ5-2mdpF2qWq_NurM0XK5lEotEnN5FrknhM7XdMc4vSNRq9uc_jb3T6TuoeU_I1DeFzQqW5ixc5btUnlbNBJ_GtpxKeGq9G0qnYV6LQ8PdsgdzzLWh9opxzCakUmwk2SHpNkE8x6aT01E0qTImVC6n9hiOmnJTH2Z6HEcUUCECHrZtT--BADvpO8viUjJcAtQOMOfjY"
-                       alt="Ceramic Artisan Mug" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"/>
-                </div>
-              </div>
-              <div>
-                <h3 class="font-bold text-espresso-black dark:text-slate-100 text-base leading-tight">Ceramic Artisan Mug</h3>
-                <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Sandstone Matte · 12oz</p>
-                <p class="text-xs text-slate-400 mt-1">Hand-thrown, microwave safe</p>
-                <button onclick="removeItem(this)" class="flex items-center gap-1 text-xs text-slate-400 hover:text-red-500 transition-colors mt-2 group/del">
-                  <span class="material-symbols-outlined text-sm group-hover/del:rotate-12 transition-transform">delete_outline</span>
-                  Remove
-                </button>
-              </div>
-            </div>
-            <div class="col-span-4 md:col-span-2 text-center">
-              <span class="text-sm font-bold text-primary">$24.00</span>
-            </div>
-            <div class="col-span-4 md:col-span-2 flex items-center justify-center">
-              <div class="flex items-center gap-1 border border-primary/20 rounded-lg overflow-hidden">
-                <button onclick="changeQty(this, -1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">−</button>
-                <span class="qty-val w-8 text-center text-sm font-bold select-none">1</span>
-                <button onclick="changeQty(this, 1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">+</button>
-              </div>
-            </div>
-            <div class="col-span-4 md:col-span-2 text-right">
-              <span class="item-total text-sm font-bold text-espresso-black dark:text-slate-100">$24.00</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── Item 3: Velvet Latte Blend ── -->
-        <div class="cart-item cart-row rounded-xl p-5 bg-white dark:bg-white/4 border border-primary/8 shadow-sm fade-up fade-up-4" data-id="3" data-price="14.00">
-          <div class="grid grid-cols-12 gap-4 items-center">
-            <div class="col-span-12 md:col-span-6 flex items-center gap-4">
-              <div class="relative shrink-0">
-                <div class="w-20 h-20 rounded-xl overflow-hidden border border-primary/10">
-                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxcsOf9lyOZmlz5KUeM_kFyK_y7k5vL0IXYmpQ0WYTydNKewIxY7hA2B6TX5BCVObeZ5wWdLY6eENHjo8Yo-HT-ksKvPMbQM9COqMiTZSSPoh3he2sKUnbdU3dFYxEfaniB0UBgHaSk77aS9ZmRzrtwqF9AqdryzQ_5fAAQDKYiDmjfSXKE2hughEmQzHF9N9tq_goGOE6ub2PIGA4z1fc3jLR-8ELjhvUIqe8LAareruFZ8ejkBGw4LX55gPey-FCk8NIUW5Q4co"
-                       alt="Velvet Latte Blend" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"/>
-                </div>
-              </div>
-              <div>
-                <h3 class="font-bold text-espresso-black dark:text-slate-100 text-base leading-tight">Velvet Latte Blend</h3>
-                <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Ground · 200g</p>
-                <p class="text-xs text-slate-400 mt-1">Silky smooth, caramel finish</p>
-                <button onclick="removeItem(this)" class="flex items-center gap-1 text-xs text-slate-400 hover:text-red-500 transition-colors mt-2 group/del">
-                  <span class="material-symbols-outlined text-sm group-hover/del:rotate-12 transition-transform">delete_outline</span>
-                  Remove
-                </button>
-              </div>
-            </div>
-            <div class="col-span-4 md:col-span-2 text-center">
-              <span class="text-sm font-bold text-primary">$14.00</span>
-            </div>
-            <div class="col-span-4 md:col-span-2 flex items-center justify-center">
-              <div class="flex items-center gap-1 border border-primary/20 rounded-lg overflow-hidden">
-                <button onclick="changeQty(this, -1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">−</button>
-                <span class="qty-val w-8 text-center text-sm font-bold select-none">1</span>
-                <button onclick="changeQty(this, 1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">+</button>
-              </div>
-            </div>
-            <div class="col-span-4 md:col-span-2 text-right">
-              <span class="item-total text-sm font-bold text-espresso-black dark:text-slate-100">$14.00</span>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /#cart-list -->
 
       <!-- Empty State (hidden initially) -->
       <div id="empty-state" class="hidden text-center py-20">
@@ -454,7 +341,7 @@
           <h4 class="font-bold text-espresso-black dark:text-slate-100 text-sm mb-1">Signature Espresso</h4>
           <div class="flex justify-between items-center">
             <span class="text-primary font-bold text-sm">$4.50</span>
-            <button onclick="showToast('Signature Espresso added!')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
+            <button onclick="addRec('sig-espresso','Signature Espresso',4.50,'https://lh3.googleusercontent.com/aida-public/AB6AXuDCJqUL2_oBwfTdX4bd2kjlp3vswBNiWER8b2KL599oZP8aZfJZXWV0Xr2W7PGuafaqSmunsqW9mhbjY93samnK6lFF-FkHWoftyMpoOgAMOAIo-PsK56Ni9uYl4Plis4ZWW6kIAx0Sq8tDl_BDq_TQxhxsIOrK5pEhtvSUlUJW6xNnZ2PCHDedPxkvkTC_iP2vLiH_FGOm4qlGIvWTrMidLtz2-wP2FGgtZs4BfcbMhNBy28JmImYgRAOkgF4bN_k3oZRo_JEe5LQ')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
               <span class="material-symbols-outlined text-sm">add</span> Add
             </button>
           </div>
@@ -471,7 +358,7 @@
           <h4 class="font-bold text-espresso-black dark:text-slate-100 text-sm mb-1">Artisan Cold Brew</h4>
           <div class="flex justify-between items-center">
             <span class="text-primary font-bold text-sm">$5.00</span>
-            <button onclick="showToast('Artisan Cold Brew added!')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
+            <button onclick="addRec('cold-brew','Artisan Cold Brew',5.00,'https://lh3.googleusercontent.com/aida-public/AB6AXuDWRLCCLi8O7YlNjjTnuR59eLphE8Kk6drx1D5yif9ThVpCYpUx1octVlWr4KrvqA8LhRFQMPM2TnE1WxQbNDGXeVZY6oP-I2upi3DLnO0gNYAFIY-1_CG9p62_KcKzAxuTfW_i6A01pqKpPVJkdNz-SYKqKe22euCfQ2jduzmnAGLOsfHMKJbp3oz9UECyYIxCqzUTyfMx0i9MMIFkg7GVyBGPzd8oJe6J24hlGRV5VnOZOsuD7VVfpX4k20TxzkL6CFJxb1yDuNo')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
               <span class="material-symbols-outlined text-sm">add</span> Add
             </button>
           </div>
@@ -488,7 +375,7 @@
           <h4 class="font-bold text-espresso-black dark:text-slate-100 text-sm mb-1">Golden Mocha</h4>
           <div class="flex justify-between items-center">
             <span class="text-primary font-bold text-sm">$6.00</span>
-            <button onclick="showToast('Golden Mocha added!')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
+            <button onclick="addRec('golden-mocha','Golden Mocha',6.00,'https://lh3.googleusercontent.com/aida-public/AB6AXuBaPX5-HSCd6UdGv-G2lEUWlL5n3TjVCKaFi9a5iDsz2GD8teVdTS3ywW5yopg3o85XH2i5gVEzP6N6Ad_sMpqc5PXKKTs7MRT0Y8Ur2atzkh1iunLMQ8iMbsapjS0vq0YHcD6R-kKh97-JB97h_IDZKuGQpvx63ud-xCNofMAYYMsI3nKmTe-xFHuSAsfxtpu71jEhW5veD8kYDCUnvXRhX_Y-dc9jIFkeSCvcIKL70zgx-6MjB1YbjrPT1qOmGiwUDkRqpVJyqSc')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
               <span class="material-symbols-outlined text-sm">add</span> Add
             </button>
           </div>
@@ -505,7 +392,7 @@
           <h4 class="font-bold text-espresso-black dark:text-slate-100 text-sm mb-1">Colombian Single Origin</h4>
           <div class="flex justify-between items-center">
             <span class="text-primary font-bold text-sm">$16.00</span>
-            <button onclick="showToast('Colombian Single Origin added!')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
+            <button onclick="addRec('colombian','Colombian Single Origin',16.00,'https://lh3.googleusercontent.com/aida-public/AB6AXuAczZxi_wS9QvxsmMmUNiHWCls4XJyHrH6QacYKivgNh7_UGAizvd55RDnhRtdpZjPDcXvHvtqVuGoUiSvNuyyYqNLKwgQfde_hyZ2AgRlvSxRP-vJSH3Ws-GBX_e7ewpoBP86dai8GDjhrTQJVgDPEls9K0l90wCl_qlQKoDDw27AGD1-xo7N-nqTJJza66oWld_U_LHhhf9-4Z_Lfe0-W8DDGU_1PhlzTiMcE451vwsqsm209Uf0I7qDBnUJL_IPvUdpsrVj-_qs')" class="flex items-center gap-1 text-xs bg-primary/8 hover:bg-primary hover:text-white text-primary px-3 py-1.5 rounded-lg font-bold transition-all">
               <span class="material-symbols-outlined text-sm">add</span> Add
             </button>
           </div>
@@ -587,116 +474,178 @@
      JAVASCRIPT
 ============================================================ -->
 <script>
-  // ── Dark Mode Toggle ──────────────────────────────────────────
-  const darkToggle = document.getElementById('dark-toggle');
-  const darkIcon   = document.getElementById('dark-icon');
-  const html       = document.documentElement;
+// ── Reuse ArtisanCart engine from cart.js ────────────────────────
+// ── Dark Mode ────────────────────────────────────────────────────
+const darkToggle = document.getElementById('dark-toggle');
+const darkIcon   = document.getElementById('dark-icon');
+const html       = document.documentElement;
+if (localStorage.getItem('theme') === 'dark') {
+  html.classList.add('dark'); darkIcon.textContent = 'light_mode';
+}
+darkToggle.addEventListener('click', () => {
+  html.classList.toggle('dark');
+  const isDark = html.classList.contains('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  darkIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+});
 
-  // Respect saved preference
-  if (localStorage.getItem('theme') === 'dark') {
-    html.classList.add('dark');
-    darkIcon.textContent = 'light_mode';
-  }
+// ── Build Cart Item HTML ──────────────────────────────────────────
+function buildItemHTML(item, idx) {
+  return `
+  <div class="cart-item cart-row rounded-xl p-5 bg-white border border-primary/8 shadow-sm" data-id="${item.id}" data-price="${item.price}" style="animation: fadeUp 0.4s ease ${idx*0.08}s both">
+    <div class="grid grid-cols-12 gap-4 items-center">
+      <div class="col-span-12 md:col-span-6 flex items-center gap-4">
+        <div class="relative shrink-0">
+          <div class="w-20 h-20 rounded-xl overflow-hidden border border-primary/10">
+            <img src="${item.img||''}" alt="${item.name}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <div>
+          <h3 class="font-bold text-espresso-black dark:text-slate-100 text-base leading-tight">${item.name}</h3>
+          <p class="text-xs text-slate-400 mt-1">${item.desc||''}</p>
+          <button onclick="removeItem(this)" class="flex items-center gap-1 text-xs text-slate-400 hover:text-red-500 transition-colors mt-2 group/del">
+            <span class="material-symbols-outlined text-sm">delete_outline</span> Remove
+          </button>
+        </div>
+      </div>
+      <div class="col-span-4 md:col-span-2 text-center">
+        <span class="text-sm font-bold text-primary">$${parseFloat(item.price).toFixed(2)}</span>
+      </div>
+      <div class="col-span-4 md:col-span-2 flex items-center justify-center">
+        <div class="flex items-center gap-1 border border-primary/20 rounded-lg overflow-hidden">
+          <button onclick="changeQty(this,-1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">−</button>
+          <span class="qty-val w-8 text-center text-sm font-bold select-none">${item.qty}</span>
+          <button onclick="changeQty(this,1)" class="qty-btn w-8 h-8 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors font-bold text-lg leading-none">+</button>
+        </div>
+      </div>
+      <div class="col-span-4 md:col-span-2 text-right">
+        <span class="item-total text-sm font-bold text-espresso-black dark:text-slate-100">$${(item.price*item.qty).toFixed(2)}</span>
+      </div>
+    </div>
+  </div>`;
+}
 
-  darkToggle.addEventListener('click', () => {
-    html.classList.toggle('dark');
-    const isDark = html.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    darkIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
-  });
+// ── Render all cart items from localStorage ───────────────────────
+function renderCart() {
+  const cart = ArtisanCart.getCart();
+  const list = document.getElementById('cart-list');
+  list.innerHTML = cart.map((item, i) => buildItemHTML(item, i)).join('');
 
-  // ── Cart State ────────────────────────────────────────────────
-  function recalcTotals() {
-    let subtotal = 0;
-    let count    = 0;
+  // Summary sidebar line items
+  const summaryEl = document.getElementById('summary-items');
+  summaryEl.innerHTML = cart.map(item => `
+    <div class="flex justify-between text-sm">
+      <span class="text-slate-500">${item.name} ×${item.qty}</span>
+      <span class="font-semibold">$${(item.price*item.qty).toFixed(2)}</span>
+    </div>`).join('');
 
-    document.querySelectorAll('#cart-list .cart-item:not(.removing)').forEach(item => {
-      const price = parseFloat(item.dataset.price);
-      const qty   = parseInt(item.querySelector('.qty-val').textContent);
-      const line  = price * qty;
-      item.querySelector('.item-total').textContent = '$' + line.toFixed(2);
-      subtotal += line;
-      count    += qty;
-    });
-
-    // Apply promo discount
-    const discRow = document.getElementById('discount-row');
-    let discount = 0;
-    if (!discRow.classList.contains('hidden')) {
-      discount = subtotal * 0.10;
-      document.getElementById('discount-amount').textContent = '−$' + discount.toFixed(2);
-    }
-
-    const tax   = (subtotal - discount) * 0.08;
-    const total = (subtotal - discount) + tax;
-
-    document.getElementById('subtotal').textContent    = '$' + subtotal.toFixed(2);
-    document.getElementById('tax').textContent         = '$' + tax.toFixed(2);
-    document.getElementById('grand-total').textContent = '$' + total.toFixed(2);
-    document.getElementById('item-count').textContent  = count;
-    document.getElementById('nav-cart-badge').textContent = count;
-
-    // Empty state
-    const visible = document.querySelectorAll('#cart-list .cart-item:not(.removing)');
-    document.getElementById('empty-state').classList.toggle('hidden', visible.length > 0);
-  }
-
-  // ── Change Quantity ───────────────────────────────────────────
-  function changeQty(btn, delta) {
-    const item    = btn.closest('.cart-item');
-    const valEl   = item.querySelector('.qty-val');
-    let qty = parseInt(valEl.textContent) + delta;
-    if (qty < 1) { removeItem(btn); return; }
-    valEl.textContent = qty;
-    recalcTotals();
-  }
-
-  // ── Remove Item ───────────────────────────────────────────────
-  function removeItem(btn) {
-    const item = btn.closest('.cart-item');
-    item.classList.add('removing');
-    setTimeout(() => {
-      item.remove();
-      recalcTotals();
-    }, 350);
-  }
-
-  // ── Promo Code ────────────────────────────────────────────────
-  function applyPromo() {
-    const code    = document.getElementById('promo-input').value.trim().toUpperCase();
-    const msg     = document.getElementById('promo-msg');
-    const discRow = document.getElementById('discount-row');
-
-    if (code === 'ARTISAN10' || code === 'BREW10') {
-      discRow.classList.remove('hidden');
-      msg.textContent = '✓ Promo applied! 10% discount activated.';
-      msg.className   = 'text-xs mt-2 text-green-500 font-semibold';
-    } else {
-      discRow.classList.add('hidden');
-      msg.textContent = '✗ Invalid code. Try ARTISAN10.';
-      msg.className   = 'text-xs mt-2 text-red-400';
-    }
-    msg.classList.remove('hidden');
-    recalcTotals();
-  }
-
-  // Promo on Enter
-  document.getElementById('promo-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter') applyPromo();
-  });
-
-  // ── Toast Notification ────────────────────────────────────────
-  let toastTimer;
-  function showToast(message) {
-    const toast = document.getElementById('toast');
-    document.getElementById('toast-msg').textContent = message;
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
-  }
-
-  // ── Init ──────────────────────────────────────────────────────
   recalcTotals();
+}
+
+// ── Recalc totals ─────────────────────────────────────────────────
+function recalcTotals() {
+  let subtotal = 0, count = 0;
+  document.querySelectorAll('#cart-list .cart-item:not(.removing)').forEach(item => {
+    const price = parseFloat(item.dataset.price);
+    const qty   = parseInt(item.querySelector('.qty-val').textContent);
+    const line  = price * qty;
+    item.querySelector('.item-total').textContent = '$' + line.toFixed(2);
+    subtotal += line;
+    count    += qty;
+  });
+  const discRow = document.getElementById('discount-row');
+  let discount = 0;
+  if (!discRow.classList.contains('hidden')) {
+    discount = subtotal * 0.10;
+    document.getElementById('discount-amount').textContent = '−$' + discount.toFixed(2);
+  }
+  const tax   = (subtotal - discount) * 0.08;
+  const total = (subtotal - discount) + tax;
+  document.getElementById('subtotal').textContent    = '$' + subtotal.toFixed(2);
+  document.getElementById('tax').textContent         = '$' + tax.toFixed(2);
+  document.getElementById('grand-total').textContent = '$' + total.toFixed(2);
+  document.getElementById('item-count').textContent  = count;
+  // Update all badges including nav
+  ArtisanCart.updateAllBadges();
+  // Empty state
+  const vis = document.querySelectorAll('#cart-list .cart-item:not(.removing)');
+  document.getElementById('empty-state').classList.toggle('hidden', vis.length > 0);
+}
+
+// ── Persist change to localStorage ───────────────────────────────
+function persistCart() {
+  const cart = [];
+  document.querySelectorAll('#cart-list .cart-item:not(.removing)').forEach(item => {
+    const id    = item.dataset.id;
+    const price = parseFloat(item.dataset.price);
+    const qty   = parseInt(item.querySelector('.qty-val').textContent);
+    const name  = item.querySelector('h3').textContent;
+    const img   = item.querySelector('img')?.src || '';
+    const desc  = item.querySelector('.text-slate-400')?.textContent || '';
+    cart.push({ id, name, price, qty, img, desc });
+  });
+  localStorage.setItem('artisanCart', JSON.stringify(cart));
+  ArtisanCart.updateAllBadges();
+}
+
+// ── Change Quantity ───────────────────────────────────────────────
+function changeQty(btn, delta) {
+  const item  = btn.closest('.cart-item');
+  const valEl = item.querySelector('.qty-val');
+  let qty = parseInt(valEl.textContent) + delta;
+  if (qty < 1) { removeItem(btn); return; }
+  valEl.textContent = qty;
+  recalcTotals();
+  persistCart();
+}
+
+// ── Remove Item ───────────────────────────────────────────────────
+function removeItem(btn) {
+  const item = btn.closest('.cart-item');
+  item.classList.add('removing');
+  setTimeout(() => { item.remove(); recalcTotals(); persistCart(); }, 350);
+}
+
+// ── Promo Code ────────────────────────────────────────────────────
+function applyPromo() {
+  const code    = document.getElementById('promo-input').value.trim().toUpperCase();
+  const msg     = document.getElementById('promo-msg');
+  const discRow = document.getElementById('discount-row');
+  if (code === 'ARTISAN10' || code === 'BREW10') {
+    discRow.classList.remove('hidden');
+    msg.textContent = '✓ Promo applied! 10% discount activated.';
+    msg.className   = 'text-xs mt-2 text-green-500 font-semibold';
+  } else {
+    discRow.classList.add('hidden');
+    msg.textContent = '✗ Invalid code. Try ARTISAN10.';
+    msg.className   = 'text-xs mt-2 text-red-400';
+  }
+  msg.classList.remove('hidden');
+  recalcTotals();
+}
+document.getElementById('promo-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') applyPromo();
+});
+
+// ── Toast (local) ─────────────────────────────────────────────────
+let toastTimer;
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+// ── Upsell add buttons ────────────────────────────────────────────
+function addRec(id, name, price, img) {
+  ArtisanCart.addToCart({ id, name, price, img, desc: '' });
+  renderCart();
+  showToast(name + ' added!');
+}
+
+// ── Init ──────────────────────────────────────────────────────────
+renderCart();
 </script>
 
 </body>

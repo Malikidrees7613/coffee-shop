@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="cart.js" defer></script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -69,10 +70,10 @@
 <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="locations.html">Location</a>
 </nav>
 <div class="flex items-center gap-6">
-<div class="relative cursor-pointer group">
-<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">shopping_cart</span>
-<span class="absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-background-light">3</span>
-</div>
+<a href="cart.html" class="relative cursor-pointer group" aria-label="View Cart">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors cart-icon-bounce" style="transition:transform 0.2s">shopping_cart</span>
+<span class="cart-badge absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full items-center justify-center border-2 border-background-light" style="display:none">0</span>
+</a>
 <button class="hidden lg:block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all uppercase tracking-wider">
                     Join the Club
                 </button>
@@ -133,7 +134,7 @@
 <div class="group flex flex-col gap-4 bg-white/40 dark:bg-background-dark/20 p-4 rounded-xl border border-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-primary/5">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Honey Lavender Latte in a glass cup" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKi7lW7x941ONR0aOhV2PmDPj39kQlsxohbOb0Bce5wuABwtM7HoAKMxSVFr4BcUt8ATG7WVS7JAeSdOrY3PgqSQje5P22clP4OJLRTxdFdyrF2Pr3lVxOkLHLYpBW9CRC8v__C_YYdC5M5lyEJG6C0v_qhbwP2CgjjNQg2MYVesIVDvntOcWNqoh4mwDGulDxcpo2txet3YNWGIfeASsj7N3manlAS1Cpn63cmy2ReIkKnd03vLzrGSxtDo_9vfkIzvRO7vRv5oc')"></div>
-<button class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
+<button onclick="addMenuItemToCart('honey-lavender','Honey Lavender Latte',6.50,'https://lh3.googleusercontent.com/aida-public/AB6AXuCKi7lW7x941ONR0aOhV2PmDPj39kQlsxohbOb0Bce5wuABwtM7HoAKMxSVFr4BcUt8ATG7WVS7JAeSdOrY3PgqSQje5P22clP4OJLRTxdFdyrF2Pr3lVxOkLHLYpBW9CRC8v__C_YYdC5M5lyEJG6C0v_qhbwP2CgjjNQg2MYVesIVDvntOcWNqoh4mwDGulDxcpo2txet3YNWGIfeASsj7N3manlAS1Cpn63cmy2ReIkKnd03vLzrGSxtDo_9vfkIzvRO7vRv5oc','Oat milk honey lavender')" class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
 <span class="material-symbols-outlined">add</span>
 </button>
 </div>
@@ -151,7 +152,7 @@
 <div class="group flex flex-col gap-4 bg-white/40 dark:bg-background-dark/20 p-4 rounded-xl border border-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-primary/5">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Pour over coffee being prepared" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDh2naDNMMpBn9OXnjopt8Id8T0NnLGVJrrYdwXvuQxehxBdTmj9fhDaJUy_X8FDCCGA80lvV0uqlIVkMD7-aM7pZMGu1h0kfnoWREHEdynT3ICcqzGlYAuSvAcRfn5ROXEdbU2tiZUheSL3F0rBhj2xIWqJt89a9gDDIU1zNKvMSVX97MsEHlBSXIneu7PqL7Om31EINCia7TbfET2aBjJtMi1INX1UP7xjBXlNcRvrEW9IAfhEeWEwGUGWvgdUHcsAjbyJI2kwMU')"></div>
-<button class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
+<button onclick="addMenuItemToCart('ethiopian-pour','Ethiopian Pour Over',5.00,'https://lh3.googleusercontent.com/aida-public/AB6AXuDh2naDNMMpBn9OXnjopt8Id8T0NnLGVJrrYdwXvuQxehxBdTmj9fhDaJUy_X8FDCCGA80lvV0uqlIVkMD7-aM7pZMGu1h0kfnoWREHEdynT3ICcqzGlYAuSvAcRfn5ROXEdbU2tiZUheSL3F0rBhj2xIWqJt89a9gDDIU1zNKvMSVX97MsEHlBSXIneu7PqL7Om31EINCia7TbfET2aBjJtMi1INX1UP7xjBXlNcRvrEW9IAfhEeWEwGUGWvgdUHcsAjbyJI2kwMU','Citrus bergamot jasmine')" class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
 <span class="material-symbols-outlined">add</span>
 </button>
 <span class="absolute top-4 left-4 bg-accent-gold/90 text-white text-[10px] font-bold uppercase px-2 py-1 rounded">Single Origin</span>
@@ -170,7 +171,7 @@
 <div class="group flex flex-col gap-4 bg-white/40 dark:bg-background-dark/20 p-4 rounded-xl border border-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-primary/5">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Cold brew coffee with ice blocks" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqDmFajOWYSxxAsnoucj5LtSQomn4uIt9Wr2EM4thkPeBkoOkn8QU9wmPjQEvyqXwQwrRcQe44DTX-H-JLzN5-mI903WI8LVGVcj5sCJ7t7QzVhgZv2iQ6fHaSO1Vz792BH3YG33uyy9idYErLAwoi2Mugll-4aeO4oP-2ytErCQajJtAkGFOhg5HhkNMULjOgNDO1E8RFq2Qjdg77xT1J9NbjMKaqZhjDGqFleXbDwv8eMbM4vwNc84z_psAEKW0t82B5IrJ-36M')"></div>
-<button class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
+<button onclick="addMenuItemToCart('cold-brew-reserve','Cold Brew Reserve',5.50,'https://lh3.googleusercontent.com/aida-public/AB6AXuCqDmFajOWYSxxAsnoucj5LtSQomn4uIt9Wr2EM4thkPeBkoOkn8QU9wmPjQEvyqXwQwrRcQe44DTX-H-JLzN5-mI903WI8LVGVcj5sCJ7t7QzVhgZv2iQ6fHaSO1Vz792BH3YG33uyy9idYErLAwoi2Mugll-4aeO4oP-2ytErCQajJtAkGFOhg5HhkNMULjOgNDO1E8RFq2Qjdg77xT1J9NbjMKaqZhjDGqFleXbDwv8eMbM4vwNc84z_psAEKW0t82B5IrJ-36M','12-hour slow steeped')" class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
 <span class="material-symbols-outlined">add</span>
 </button>
 </div>
@@ -199,7 +200,7 @@
 <div class="group flex flex-col gap-4 bg-white/40 dark:bg-background-dark/20 p-4 rounded-xl border border-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-primary/5">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Cortado coffee in a small glass" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDr1mlxKHq8g9K_Ewj3bL58F_lwA56CmlzothWwK6CTvHyIDL7A4ILhzAqtHinAvFVNhqVx3VqMgYSqheOvg-6Pm2DO_v76cC9TFGyQZBTVhCeNupeBPTUZBCprQJjrQ12JdiYwyfIVFUoguT-hXjGKCzj2FOABEBGECGCQ7d3ooXE4eJ2FdOzg3HDd6KYHcfxU79_tUo5Apu_pwABdpGVoQ77KyNEYgPmE_UEvlvCMZalkkbGe9VMshNeq1SLAbaUSDAiS7cXZsRo')"></div>
-<button class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
+<button onclick="addMenuItemToCart('cortado','Classic Cortado',4.25,'https://lh3.googleusercontent.com/aida-public/AB6AXuDr1mlxKHq8g9K_Ewj3bL58F_lwA56CmlzothWwK6CTvHyIDL7A4ILhzAqtHinAvFVNhqVx3VqMgYSqheOvg-6Pm2DO_v76cC9TFGyQZBTVhCeNupeBPTUZBCprQJjrQ12JdiYwyfIVFUoguT-hXjGKCzj2FOABEBGECGCQ7d3ooXE4eJ2FdOzg3HDd6KYHcfxU79_tUo5Apu_pwABdpGVoQ77KyNEYgPmE_UEvlvCMZalkkbGe9VMshNeq1SLAbaUSDAiS7cXZsRo','Equal parts espresso and milk')" class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
 <span class="material-symbols-outlined">add</span>
 </button>
 </div>
@@ -217,7 +218,7 @@
 <div class="group flex flex-col gap-4 bg-white/40 dark:bg-background-dark/20 p-4 rounded-xl border border-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-primary/5">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Espresso shot with thick crema" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDS-aTxEtuIndNgXLYCJ2Yo-k8NvTol1dKnANYcmNf8tGBsys6znyGP7fD_8cmjVC4YbGODoJTNH1lZhgWAMthUq6hZQsJBDR03HDC0FU-GPPBairwSu7Tq9yt0iC636cZ-E2yMDl1anQJQ3xGiYmkyyzSz-eCnmqsuQxFssZoYwMhth6Xs-ReHvOeuhW5eRr7l3BQUvhuqxnFozuJ7DxmVfy-Zjc8qiRJ2L3vGiR42DGcCX3qqomZg3kEfeKNDXJ7Mig5Txxh9R3M')"></div>
-<button class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
+<button onclick="addMenuItemToCart('double-espresso','Double Espresso',3.50,'https://lh3.googleusercontent.com/aida-public/AB6AXuDS-aTxEtuIndNgXLYCJ2Yo-k8NvTol1dKnANYcmNf8tGBsys6znyGP7fD_8cmjVC4YbGODoJTNH1lZhgWAMthUq6hZQsJBDR03HDC0FU-GPPBairwSu7Tq9yt0iC636cZ-E2yMDl1anQJQ3xGiYmkyyzSz-eCnmqsuQxFssZoYwMhth6Xs-ReHvOeuhW5eRr7l3BQUvhuqxnFozuJ7DxmVfy-Zjc8qiRJ2L3vGiR42DGcCX3qqomZg3kEfeKNDXJ7Mig5Txxh9R3M','House blend Nocturne crema')" class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
 <span class="material-symbols-outlined">add</span>
 </button>
 </div>
@@ -235,7 +236,7 @@
 <div class="group flex flex-col gap-4 bg-white/40 dark:bg-background-dark/20 p-4 rounded-xl border border-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-primary/5">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Smoked vanilla latte with foam art" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCj1KvJROfR3SB4AsgfoggajdxWucIy_EvtS7E7B5qxfz_EBtTbkESJVyeTduvXpjglS-4jWcf90OtTfTz6y4kJg4TEzArGkDUGOqv1-cDDQ_J1KvYIDxfSu4G9t_gJaSh3J4ayJtp9J0tQIdcfLXoAUrDOz5e3Sxjq0A_HYwm3wfKXyPCxi_dTR9RPvYJrIyai_LlEs7MVDc1_3sfcjYSPWhQl4BcDTyU48tHiUcKbfT80YeAZTiGS9STeLkBX4RzSvnRH-CAM7DU')"></div>
-<button class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
+<button onclick="addMenuItemToCart('smoked-vanilla','Smoked Vanilla Miso',7.00,'https://lh3.googleusercontent.com/aida-public/AB6AXuCj1KvJROfR3SB4AsgfoggajdxWucIy_EvtS7E7B5qxfz_EBtTbkESJVyeTduvXpjglS-4jWcf90OtTfTz6y4kJg4TEzArGkDUGOqv1-cDDQ_J1KvYIDxfSu4G9t_gJaSh3J4ayJtp9J0tQIdcfLXoAUrDOz5e3Sxjq0A_HYwm3wfKXyPCxi_dTR9RPvYJrIyai_LlEs7MVDc1_3sfcjYSPWhQl4BcDTyU48tHiUcKbfT80YeAZTiGS9STeLkBX4RzSvnRH-CAM7DU','Madagascar vanilla miso sea salt')" class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
 <span class="material-symbols-outlined">add</span>
 </button>
 </div>
@@ -264,7 +265,7 @@
 <div class="group flex flex-col gap-4 bg-white/40 dark:bg-background-dark/20 p-4 rounded-xl border border-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-primary/5">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Flaky golden croissant on a plate" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7SUdwb6LVO5JQQxaxrcGMdZB5Qr3S6_JQRBMGKhzvCQC9zkhGS-PpZD6hfXmSkImVwBTRyTdrt367e-EJnJY0_Vooe6pMDjnf2c2qhOeHA_nmTBH8qcFBDk-iOSSpgdNeNDJCzWytkrKu_ga-p790IYBXcrS2bQq8J81qMKG4eWoZ_o-Loxfu5U0rNs6zNJIMprsQwkbl5LEe07lTNyBYtrvqH6j9szGi8yPZRWNFY59oDhgHhsxdSVol8C7bLqsqLav43HkpjGs')"></div>
-<button class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
+<button onclick="addMenuItemToCart('almond-croissant','Almond Croissant',5.75,'https://lh3.googleusercontent.com/aida-public/AB6AXuA7SUdwb6LVO5JQQxaxrcGMdZB5Qr3S6_JQRBMGKhzvCQC9zkhGS-PpZD6hfXmSkImVwBTRyTdrt367e-EJnJY0_Vooe6pMDjnf2c2qhOeHA_nmTBH8qcFBDk-iOSSpgdNeNDJCzWytkrKu_ga-p790IYBXcrS2bQq8J81qMKG4eWoZ_o-Loxfu5U0rNs6zNJIMprsQwkbl5LEe07lTNyBYtrvqH6j9szGi8yPZRWNFY59oDhgHhsxdSVol8C7bLqsqLav43HkpjGs','Double-baked frangipane almonds')" class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
 <span class="material-symbols-outlined">add</span>
 </button>
 </div>
@@ -282,7 +283,7 @@
 <div class="group flex flex-col gap-4 bg-white/40 dark:bg-background-dark/20 p-4 rounded-xl border border-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-primary/5">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Fresh fruit tart with cream" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5qtBkI4WiPBYaE3uPCzSNTIc6gXF7eVjKY84XQrebWCpJdUyxrxrWoM_kBtWTUzv5go5FxuSWSWxxX-nTjD0z6Ti-GcFaT2ogHFqAjof0-U_b82BcFDj01zapxEq5jB1ZBeMyXCqyLcjD4KvqOJwzQx45RdbqA5fs3FD4OsQ1301iExJ3tdn91Czy5zTl0sEiJSjH18mZZSsGhxSexi_kM0aVO01HD2odN9n7hfHYbC4M2pbw2-X0Q69thmX29zeJxKc2QMn0Nlc')"></div>
-<button class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
+<button onclick="addMenuItemToCart('fruit-tart','Seasonal Fruit Tart',6.25,'https://lh3.googleusercontent.com/aida-public/AB6AXuC5qtBkI4WiPBYaE3uPCzSNTIc6gXF7eVjKY84XQrebWCpJdUyxrxrWoM_kBtWTUzv5go5FxuSWSWxxX-nTjD0z6Ti-GcFaT2ogHFqAjof0-U_b82BcFDj01zapxEq5jB1ZBeMyXCqyLcjD4KvqOJwzQx45RdbqA5fs3FD4OsQ1301iExJ3tdn91Czy5zTl0sEiJSjH18mZZSsGhxSexi_kM0aVO01HD2odN9n7hfHYbC4M2pbw2-X0Q69thmX29zeJxKc2QMn0Nlc','Vanilla custard berries shortbread')" class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
 <span class="material-symbols-outlined">add</span>
 </button>
 </div>
@@ -300,7 +301,7 @@
 <div class="group flex flex-col gap-4 bg-white/40 dark:bg-background-dark/20 p-4 rounded-xl border border-primary/5 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
 <div class="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-primary/5">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Savory spinach and feta turnover" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCoAmwX1Xl7SBmVOYXtPjOAkrKb6ByFBr_hrpnLqj7kXbGtwsFSHcaYRM3ue4Pi1m7HjZrvvATv9_aSH96VAhkduSIxQjwOVR7tLVlC9k458RuWxe5rIondwrc7b7lUfpSGIlshr7fV_bCNwg6UyKQy5CLmRyetqMmghxyzgpfbkb9RmXy7AVAGcrGz4yXbrvissnhNXqwWW3sdML5E_G05iQrlnl1Xoo2tObzJWp3_j9AEpjKzV5UBPT1S-fxFQKqhY0d9c6UTKOU')"></div>
-<button class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
+<button onclick="addMenuItemToCart('spinach-danish','Spinach Feta Danish',5.50,'https://lh3.googleusercontent.com/aida-public/AB6AXuCoAmwX1Xl7SBmVOYXtPjOAkrKb6ByFBr_hrpnLqj7kXbGtwsFSHcaYRM3ue4Pi1m7HjZrvvATv9_aSH96VAhkduSIxQjwOVR7tLVlC9k458RuWxe5rIondwrc7b7lUfpSGIlshr7fV_bCNwg6UyKQy5CLmRyetqMmghxyzgpfbkb9RmXy7AVAGcrGz4yXbrvissnhNXqwWW3sdML5E_G05iQrlnl1Xoo2tObzJWp3_j9AEpjKzV5UBPT1S-fxFQKqhY0d9c6UTKOU','Puff pastry spinach imported feta')" class="absolute bottom-4 right-4 size-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent-gold">
 <span class="material-symbols-outlined">add</span>
 </button>
 </div>
@@ -380,11 +381,12 @@
 </div>
 </footer>
 <!-- Floating Cart Button (Mobile Only) -->
-<div class="fixed bottom-6 right-6 md:hidden z-50">
-<button class="size-14 bg-accent-gold text-white rounded-full shadow-2xl flex items-center justify-center">
-<span class="material-symbols-outlined">shopping_cart</span>
-</button>
+<a href="cart.html" class="fixed bottom-6 right-6 md:hidden z-50" aria-label="View Cart">
+<div class="relative size-14 bg-accent-gold text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined cart-icon-bounce" style="transition:transform 0.2s">shopping_cart</span>
+<span class="cart-badge absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold h-5 w-5 rounded-full items-center justify-center border-2 border-background-light" style="display:none">0</span>
 </div>
+</a>
 </div>
 <!-- Scrollspy and Sticky Sidebar Script -->
 <script>
@@ -424,5 +426,12 @@
             observer.observe(section);
         });
     });
+</script>
+<script>
+function addMenuItemToCart(id, name, price, img, desc) {
+  ArtisanCart.addToCart({ id, name, price, img, desc });
+  ArtisanCart.bounceCartIcon();
+  ArtisanCart.showCartToast(name);
+}
 </script>
 </body></html>

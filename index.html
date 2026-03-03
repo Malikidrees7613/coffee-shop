@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="cart.js" defer></script>
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -59,10 +60,10 @@
 <a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-widest" href="locations.html">Location</a>
 </nav>
 <div class="flex items-center gap-6">
-<div class="relative cursor-pointer group">
-<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors">shopping_cart</span>
-<span class="absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-background-light">3</span>
-</div>
+<a href="cart.html" class="relative cursor-pointer group" aria-label="View Cart">
+<span class="material-symbols-outlined text-2xl group-hover:text-primary transition-colors cart-icon-bounce" style="transition:transform 0.2s">shopping_cart</span>
+<span class="cart-badge absolute -top-2 -right-2 bg-accent-gold text-espresso-black text-[10px] font-bold h-5 w-5 rounded-full items-center justify-center border-2 border-background-light" style="display:none">0</span>
+</a>
 <button class="hidden lg:block bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all uppercase tracking-wider">
                     Join the Club
                 </button>
@@ -111,7 +112,7 @@
 <span class="text-primary font-bold">$4.50</span>
 </div>
 <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Rich, full-bodied with notes of dark chocolate and caramel.</p>
-<button class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
+<button onclick="addMenuItemToCart('sig-espresso','Signature Espresso',4.50,'https://lh3.googleusercontent.com/aida-public/AB6AXuDCJqUL2_oBwfTdX4bd2kjlp3vswBNiWER8b2KL599oZP8aZfJZXWV0Xr2W7PGuafaqSmunsqW9mhbjY93samnK6lFF-FkHWoftyMpoOgAMOAIo-PsK56Ni9uYl4Plis4ZWW6kIAx0Sq8tDl_BDq_TQxhxsIOrK5pEhtvSUlUJW6xNnZ2PCHDedPxkvkTC_iP2vLiH_FGOm4qlGIvWTrMidLtz2-wP2FGgtZs4BfcbMhNBy28JmImYgRAOkgF4bN_k3oZRo_JEe5LQ','Rich dark chocolate &amp; caramel')" class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
 <span class="material-symbols-outlined text-sm group-hover/btn:rotate-90 transition-transform">add</span>
                             Add to Order
                         </button>
@@ -128,7 +129,7 @@
 <span class="text-primary font-bold">$5.50</span>
 </div>
 <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Silky steamed milk poured over our signature roast.</p>
-<button class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
+<button onclick="addMenuItemToCart('velvet-latte','Velvet Latte',5.50,'https://lh3.googleusercontent.com/aida-public/AB6AXuBxcsOf9lyOZmlz5KUeM_kFyK_y7k5vL0IXYmpQ0WYTydNKewIxY7hA2B6TX5BCVObeZ5wWdLY6eENHjo8Yo-HT-ksKvPMbQM9COqMiTZSSPoh3he2sKUnbdU3dFYxEfaniB0UBgHaSk77aS9ZmRzrtwqF9AqdryzQ_5fAAQDKYiDmjfSXKE2hughEmQzHF9N9tq_goGOE6ub2PIGA4z1fc3jLR-8ELjhvUIqe8LAareruFZ8ejkBGw4LX55gPey-FCk8NIUW5Q4co','Silky steamed milk')" class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
 <span class="material-symbols-outlined text-sm group-hover/btn:rotate-90 transition-transform">add</span>
                             Add to Order
                         </button>
@@ -145,7 +146,7 @@
 <span class="text-primary font-bold">$5.00</span>
 </div>
 <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">Slow-steeped for 18 hours for maximum smoothness.</p>
-<button class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
+<button onclick="addMenuItemToCart('cold-brew','Artisan Cold Brew',5.00,'https://lh3.googleusercontent.com/aida-public/AB6AXuDWRLCCLi8O7YlNjjTnuR59eLphE8Kk6drx1D5yif9ThVpCYpUx1octVlWr4KrvqA8LhRFQMPM2TnE1WxQbNDGXeVZY6oP-I2upi3DLnO0gNYAFIY-1_CG9p62_KcKzAxuTfW_i6A01pqKpPVJkdNz-SYKqKe22euCfQ2jduzmnAGLOsfHMKJbp3oz9UECyYIxCqzUTyfMx0i9MMIFkg7GVyBGPzd8oJe6J24hlGRV5VnOZOsuD7VVfpX4k20TxzkL6CFJxb1yDuNo','Slow-steeped 18 hours')" class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
 <span class="material-symbols-outlined text-sm group-hover/btn:rotate-90 transition-transform">add</span>
                             Add to Order
                         </button>
@@ -162,7 +163,7 @@
 <span class="text-primary font-bold">$6.00</span>
 </div>
 <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">A decadent blend of espresso, dark cocoa, and gold leaf flakes.</p>
-<button class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
+<button onclick="addMenuItemToCart('golden-mocha','Golden Mocha',6.00,'https://lh3.googleusercontent.com/aida-public/AB6AXuBaPX5-HSCd6UdGv-G2lEUWlL5n3TjVCKaFi9a5iDsz2GD8teVdTS3ywW5yopg3o85XH2i5gVEzP6N6Ad_sMpqc5PXKKTs7MRT0Y8Ur2atzkh1iunLMQ8iMbsapjS0vq0YHcD6R-kKh97-JB97h_IDZKuGQpvx63ud-xCNofMAYYMsI3nKmTe-xFHuSAsfxtpu71jEhW5veD8kYDCUnvXRhX_Y-dc9jIFkeSCvcIKL70zgx-6MjB1YbjrPT1qOmGiwUDkRqpVJyqSc','Espresso dark cocoa gold leaf')" class="w-full py-3 border border-primary/20 text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2 group/btn">
 <span class="material-symbols-outlined text-sm group-hover/btn:rotate-90 transition-transform">add</span>
                             Add to Order
                         </button>
